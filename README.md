@@ -1,4 +1,4 @@
-# vue2-word-hunt
+# Mall-system
 
 ## Project setup
 ```
