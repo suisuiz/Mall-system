@@ -1,28 +1,29 @@
+<!--
+ * @Descripttion: 
+ * @Author: SUI
+ * @Date: 2022-05-09 12:12:01
+ * @LastEditors: SUI
+ * @LastEditTime: 2022-05-11 18:13:11
+ * @FilePath: \Mall-system\src\App.vue
+-->
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <!-- 路由 -->
+    <router-view />
   </div>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
-</script>
-
 <style lang="scss">
+// 引入样式
+@import 'assets/normalize.css';
+@import 'assets/index.scss';
+@import 'assets/common.scss';
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  font: 12px Microsoft YaHei, Heiti SC, tahoma, arial, Hiragino Sans GB, '\5B8B\4F53', sans-serif;
+  color: #333;
+  // width: 100%;
+  height: 100%;
+  min-width: 1370px;
 }
 </style>

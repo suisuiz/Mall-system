@@ -1,0 +1,83 @@
+// 公共的样式
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-align {
+  display: flex;
+  align-items: center;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-space {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex-center-space {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.row {
+  flex-direction: row;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.column-jus {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.column-justify {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.column-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.center {
+  text-align: center;
+}
+
+.inline-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+// 页面进入 transition 效果
+.fade-enter-active {
+  transition: opacity 0.5s;
+}
+
+.fade-enter {
+  opacity: 0;
+}
+
+// 全局设置卡片样式
+.el-card {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .15) !important;
+}
+
+// 分页设置样式
+.el-pagination {
+  margin-top: 15px;
+}
