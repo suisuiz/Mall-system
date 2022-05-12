@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2021-08-14 17:41:47
  * @LastEditors: SUI
- * @LastEditTime: 2021-08-24 01:17:29
+ * @LastEditTime: 2022-05-12 10:00:20
  * @FilePath: \Mall-system\src\router\index.js
  */
 import Vue from 'vue'
@@ -30,46 +30,9 @@ const routes = [{
     // 重定向
     redirect: '/welcome',
     children: [{
-        path: '/welcome',
-        component: () => import('@/components/home/Welcome')
-      },
-      {
-        path: '/users',
-        component: () => import('@/views/user/Users')
-      },
-      {
-        path: '/roles',
-        component: () => import('@/views/power/Roles')
-      },
-      {
-        path: '/rights',
-        component: () => import('@/views/power/Rights')
-      },
-      {
-        path: '/goods',
-        component: () => import('@/views/goods/Goods')
-      },
-      {
-        path: '/goods/add',
-        component: () => import('@/views/goods/Add')
-      },
-      {
-        path: '/params',
-        component: () => import('@/views/goods/Params')
-      },
-      {
-        path: '/categories',
-        component: () => import('@/views/goods/Cate')
-      },
-      {
-        path: '/orders',
-        component: () => import('@/views/order/Orders')
-      },
-      {
-        path: '/reports',
-        component: () => import('@/views/report/Reports')
-      },
-    ]
+      path: '/welcome',
+      component: () => import('@/components/home/Welcome')
+    }]
   },
 ]
 
