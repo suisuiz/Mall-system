@@ -1,9 +1,9 @@
 /*
  * @Descripttion: 路由配置
  * @Author: SUI
- * @Date: 2021-08-14 17:41:47
+ * @Date: 2022-05-12 09:23:13
  * @LastEditors: SUI
- * @LastEditTime: 2022-05-12 10:00:20
+ * @LastEditTime: 2022-05-13 18:24:22
  * @FilePath: \Mall-system\src\router\index.js
  */
 import Vue from 'vue'

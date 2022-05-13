@@ -1,10 +1,10 @@
 <!--
  * @Descripttion: 
  * @Author: SUI
- * @Date: 2021-08-15 12:41:02
+ * @Date: 2022-05-12 09:23:13
  * @LastEditors: SUI
- * @LastEditTime: 2021-08-22 20:35:53
- * @FilePath: \mall-system-gitee\src\views\Home.vue
+ * @LastEditTime: 2022-05-13 18:24:39
+ * @FilePath: \Mall-system\src\views\Home.vue
 -->
 <template>
   <!-- container -->
@@ -42,11 +42,7 @@
         >
           <!-- 一级菜单 -->
           <!-- index 是字符串类型  且唯一性 -->
-          <el-submenu
-            :index="item.id + ''"
-            v-for="item in menuList"
-            :key="item.id"
-          >
+          <el-submenu :index="item.id + ''" v-for="item in menuList" :key="item.id">
             <!-- 一级菜单模板区域 -->
             <template slot="title">
               <!-- icon -->
@@ -57,12 +53,7 @@
 
             <!-- 二级菜单 -->
             <!-- index 于点击 activePath 保持一致-->
-            <el-menu-item
-              :index="'/' + keys.path"
-              v-for="keys in item.children"
-              :key="keys.id"
-              @click="saveNavStatus('/' + keys.path)"
-            >
+            <el-menu-item :index="'/' + keys.path" v-for="keys in item.children" :key="keys.id" @click="saveNavStatus('/' + keys.path)">
               <!-- 二级菜单模板区域 -->
               <template slot="title">
                 <!-- icon -->
@@ -93,11 +84,11 @@ export default {
       menuList: [],
       // 字体图标对象
       iconObj: {
-        '125': 'el-icon-user-solid',
-        '103': 'el-icon-s-tools',
-        '101': 'el-icon-s-goods',
-        '102': 'el-icon-s-order',
-        '145': 'el-icon-s-marketing'
+        125: 'el-icon-user-solid',
+        103: 'el-icon-s-tools',
+        101: 'el-icon-s-goods',
+        102: 'el-icon-s-order',
+        145: 'el-icon-s-marketing'
       },
       // 侧边栏菜单默认不折叠
       isCollapse: false,

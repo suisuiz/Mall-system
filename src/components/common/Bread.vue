@@ -1,10 +1,10 @@
 <!--
  * @Descripttion: 面包屑组件
  * @Author: SUI
- * @Date: 2021-08-15 09:23:13
+ * @Date: 2022-05-12 09:23:13
  * @LastEditors: SUI
- * @LastEditTime: 2021-08-18 22:31:54
- * @FilePath: \mall-system-gitee\src\components\common\Bread.vue
+ * @LastEditTime: 2022-05-13 18:22:21
+ * @FilePath: \Mall-system\src\components\common\Bread.vue
 -->
 <template>
   <div class="breadcrumb">

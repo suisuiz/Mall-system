@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-05-09 12:12:01
  * @LastEditors: SUI
- * @LastEditTime: 2022-05-11 18:13:11
+ * @LastEditTime: 2022-05-13 18:24:55
  * @FilePath: \Mall-system\src\App.vue
 -->
 <template>

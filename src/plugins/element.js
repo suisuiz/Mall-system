@@ -1,7 +1,7 @@
 /*
  * @Descripttion: 
  * @Author: SUI
- * @Date: 2021-08-14 21:20:34
+ * @Date: 2022-05-12 09:23:13
  * @LastEditors: SUI
  * @LastEditTime: 2022-05-11 18:15:06
  * @FilePath: \Mall-system\src\plugins\element.js

@@ -1,9 +1,9 @@
 /*
  * @Descripttion: 
  * @Author: SUI
- * @Date: 2021-08-15 10:58:17
+ * @Date: 2022-05-12 09:23:13
  * @LastEditors: SUI
- * @LastEditTime: 2022-05-11 18:14:36
+ * @LastEditTime: 2022-05-13 18:22:57
  * @FilePath: \Mall-system\src\api\index.js
  */
 // 配置API接口地址
