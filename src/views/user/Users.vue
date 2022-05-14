@@ -3,11 +3,11 @@
  * @Author: SUI
  * @Date: 2022-05-13 18:31:38
  * @LastEditors: SUI
- * @LastEditTime: 2022-05-13 18:32:06
+ * @LastEditTime: 2022-05-14 22:02:45
  * @FilePath: \Mall-system\src\views\user\Users.vue
 -->
 <template>
-  <div></div>
+  <div>User Page</div>
 </template>
 <script>
 import { defineComponent } from '@vue/composition-api'
