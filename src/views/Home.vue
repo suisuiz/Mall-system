@@ -1,9 +1,9 @@
 <!--
- * @Descripttion: 
+ * @Descripttion: 首页欢迎语页面
  * @Author: SUI
  * @Date: 2022-05-12 09:23:13
  * @LastEditors: SUI
- * @LastEditTime: 2022-05-15 16:55:00
+ * @LastEditTime: 2022-05-15 17:00:48
  * @FilePath: \Mall-system\src\views\Home.vue
 -->
 <template>

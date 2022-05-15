@@ -1,22 +1,18 @@
 <!--
- * @Descripttion: 
+ * @Descripttion: 用户管理页面
  * @Author: SUI
  * @Date: 2022-05-13 18:31:38
  * @LastEditors: SUI
- * @LastEditTime: 2022-05-14 22:04:06
+ * @LastEditTime: 2022-05-15 17:01:37
  * @FilePath: \Mall-system\src\views\user\Users.vue
 -->
 <template>
   <div>User Page</div>
 </template>
-//
 <script>
-// import { defineComponent } from '@vue/composition-api'
-
-// export default defineComponent({
-//   setup() {}
-// })
-//
+export default {
+  name: 'Users'
+}
 </script>
 
 <script>
