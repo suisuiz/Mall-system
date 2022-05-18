@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-05-13 18:31:38
  * @LastEditors: SUI
- * @LastEditTime: 2022-05-18 13:52:44
+ * @LastEditTime: 2022-05-18 13:55:33
  * @FilePath: \Mall-system\src\views\user\Users.vue
 -->
 <template>
@@ -76,9 +76,8 @@ import Bread from '@/components/common/Bread'
 export default {
   name: 'Users',
   // 引入模板
-  components: {
-    Bread
-  },
+  components: { Bread },
+
   data() {
     // 自定义校验规则
     var checkEmail = (rules, value, callback) => {
@@ -179,6 +178,26 @@ export default {
       rolesList: [],
       // 选择的角色 ID
       selectedRoleId: ''
+    }
+  },
+
+  created() {
+    // 获取用户列表
+    this.getUserLIst()
+  },
+
+  methods: {
+    // 获取用户列表
+    getUserLIst() {
+      let that = this
+      that.$api.get('users', that.queryInfo, (res) => {
+        if (res.meta.status !== 200) return that.$message.error(res.meta.msg)
+        that.$message.success('获取用户数据成功')
+        // console.log(res.data)
+        that.usersList = res.data.users
+        that.totalpage = res.data.total
+        that.queryInfo.pagenum = res.data.pagenum
+      })
     }
   }
 }
