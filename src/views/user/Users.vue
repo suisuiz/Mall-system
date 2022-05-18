@@ -3,13 +3,65 @@
  * @Author: SUI
  * @Date: 2022-05-13 18:31:38
  * @LastEditors: SUI
- * @LastEditTime: 2022-05-15 17:05:33
+ * @LastEditTime: 2022-05-18 13:52:44
  * @FilePath: \Mall-system\src\views\user\Users.vue
 -->
 <template>
   <div>
     <!-- 面包屑导航 -->
     <Bread :title="breadTitle"></Bread>
+
+    <!-- 内容区域卡片 -->
+    <el-card class="box-card">
+      <!-- 搜索和添加 -->
+      <el-row :gutter="20">
+        <el-col :span="12">
+          <el-input placeholder="请输入内容" v-model="queryInfo.query" clearable @clear="getUserLIst">
+            <el-button slot="append" icon="el-icon-search" @click="getUserLIst"></el-button>
+          </el-input>
+        </el-col>
+        <!-- 添加用户 -->
+        <el-col :span="4">
+          <el-button type="primary" @click="addDialog = true">添加用户</el-button>
+        </el-col>
+      </el-row>
+
+      <!-- 表格数据 -->
+      <el-table :data="usersList" border stripe>
+        <el-table-column type="index" label="#"></el-table-column>
+        <el-table-column label="姓名" prop="username"></el-table-column>
+        <el-table-column label="电话" prop="mobile"></el-table-column>
+        <el-table-column label="邮箱" prop="email"></el-table-column>
+        <el-table-column label="角色" prop="role_name"></el-table-column>
+        <el-table-column label="状态" prop="mg_state">
+          <!-- {{ scope.row}}通过作用域插槽 slot-scope 拿到作用域的数据，然后scope.row拿到这一行的数据  -->
+          <template slot-scope="scope">
+            <el-switch v-model="scope.row.mg_state" @change="userStateChanged(scope.row)"> </el-switch>
+          </template>
+        </el-table-column>
+        <el-table-column label="操作">
+          <template slot-scope="scope">
+            <el-button size="mini" type="primary" icon="el-icon-edit" @click="showEditDialog(scope.row.id)"></el-button>
+            <el-button size="mini" type="danger" icon="el-icon-delete" @click="removeUserById(scope.row.id)"></el-button>
+            <el-tooltip effect="dark" content="分配角色" placement="top" :enterable="false">
+              <el-button size="mini" type="warning" icon="el-icon-setting" @click="setRole(scope.row)"></el-button>
+            </el-tooltip>
+          </template>
+        </el-table-column>
+      </el-table>
+
+      <!-- 分页 -->
+      <el-pagination
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        :current-page="queryInfo.pagenum"
+        :page-sizes="[1, 2, 5, 10]"
+        :page-size="queryInfo.pagesize"
+        layout="total, sizes, prev, pager, next, jumper"
+        :total="totalpage"
+      >
+      </el-pagination>
+    </el-card>
   </div>
 </template>
 <script>
