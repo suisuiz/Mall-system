@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-05-13 18:31:38
  * @LastEditors: SUI
- * @LastEditTime: 2022-05-18 13:55:33
+ * @LastEditTime: 2022-05-18 14:04:09
  * @FilePath: \Mall-system\src\views\user\Users.vue
 -->
 <template>
@@ -62,6 +62,10 @@
       >
       </el-pagination>
     </el-card>
+
+    <!-- 添加用户 -->
+    <!-- 修改用户 -->
+    <!-- 分配角色 -->
   </div>
 </template>
 <script>
@@ -198,6 +202,18 @@ export default {
         that.totalpage = res.data.total
         that.queryInfo.pagenum = res.data.pagenum
       })
+    },
+
+    // 监听分页 改变条数
+    handleSizeChange(pagesize) {
+      this.queryInfo.pagesize = pagesize
+      this.getUserLIst()
+    },
+
+    // 监听分页 改变页数
+    handleCurrentChange(pagenum) {
+      this.queryInfo.pagenum = pagenum
+      this.getUserLIst()
     }
   }
 }
