@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-05-13 18:31:38
  * @LastEditors: SUI
- * @LastEditTime: 2022-05-18 14:04:09
+ * @LastEditTime: 2022-05-19 19:48:17
  * @FilePath: \Mall-system\src\views\user\Users.vue
 -->
 <template>
@@ -87,6 +87,25 @@
     </el-dialog>
 
     <!-- 修改用户 -->
+    <el-dialog title="修改用户" width="35%" :visible.sync="editDialog" @close="editDialog = false">
+      <el-form ref="editFormRef" :model="editForm" :rules="formRules">
+        <el-form-item label="用户名" label-width="75px">
+          <el-input v-model="editForm.username" autocomplete="off" disabled></el-input>
+        </el-form-item>
+        <!-- prop="username"  校验 -->
+        <el-form-item prop="email" label="邮箱" label-width="75px">
+          <el-input type="email" v-model="editForm.email" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item prop="mobile" label="手机号" label-width="75px">
+          <el-input type="tel" v-model="editForm.mobile" autocomplete="off"></el-input>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="editDialog = false">取 消</el-button>
+        <el-button type="primary" @click="editSubmitForm('editFormRef')">添 加</el-button>
+      </div>
+    </el-dialog>
+
     <!-- 分配角色 -->
   </div>
 </template>
