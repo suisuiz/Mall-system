@@ -64,6 +64,28 @@
     </el-card>
 
     <!-- 添加用户 -->
+    <el-dialog title="添加用户" width="35%" :visible.sync="addDialog" @close="addResetForm('addFormRef')">
+      <el-form ref="addFormRef" :model="addForm" :rules="formRules">
+        <!-- prop="username"  校验 -->
+        <el-form-item prop="username" label="用户名" label-width="75px">
+          <el-input v-model="addForm.username" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item prop="password" label="密码" label-width="75px">
+          <el-input type="password" v-model="addForm.password" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item prop="email" label="邮箱" label-width="75px">
+          <el-input type="email" v-model="addForm.email" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item prop="mobile" label="手机号" label-width="75px">
+          <el-input type="tel" v-model="addForm.mobile" autocomplete="off"></el-input>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="addResetForm('addFormRef')">取 消</el-button>
+        <el-button type="primary" @click="addSubmitForm('addFormRef')">添 加</el-button>
+      </div>
+    </el-dialog>
+
     <!-- 修改用户 -->
     <!-- 分配角色 -->
   </div>
