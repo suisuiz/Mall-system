@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-05-13 18:31:38
  * @LastEditors: SUI
- * @LastEditTime: 2022-05-19 19:48:17
+ * @LastEditTime: 2022-05-20 16:53:32
  * @FilePath: \Mall-system\src\views\user\Users.vue
 -->
 <template>
@@ -107,13 +107,24 @@
     </el-dialog>
 
     <!-- 分配角色 -->
+    <el-dialog title="分配角色" width="35%" :visible.sync="setRoleRightDialog" @close="setDialogClosed">
+      <div>
+        <p>当前用户名：{{ userInfo.username }}</p>
+        <p style="margin: 30px 0">当前角色：{{ userInfo.role_name }}</p>
+        <p>
+          分配新角色：
+          <el-select v-model="selectedRoleId" placeholder="请选择">
+            <el-option v-for="item in rolesList" :key="item.id" :label="item.roleName" :value="item.id"> </el-option>
+          </el-select>
+        </p>
+      </div>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="setRoleRightDialog = false">取 消</el-button>
+        <el-button type="primary" @click="saveRoleInfo(selectedRoleId)">添 加</el-button>
+      </div>
+    </el-dialog>
   </div>
 </template>
-<script>
-export default {
-  name: 'Users'
-}
-</script>
 
 <script>
 // 引入面包屑
@@ -256,6 +267,24 @@ export default {
       this.queryInfo.pagenum = pagenum
       this.getUserLIst()
     }
+
+    // 添加用户提交
+
+    // 初始化添加用户
+
+    // 修改用户状态
+
+    // 展示修改弹框
+
+    // 修改用户提交
+
+    // 根据 ID 删除用户
+
+    // 显示分配角色
+
+    // 保存角色
+
+    // 关闭分配角色弹框
   }
 }
 </script>
