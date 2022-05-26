@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-05-13 18:31:38
  * @LastEditors: SUI
- * @LastEditTime: 2022-05-25 21:23:15
+ * @LastEditTime: 2022-05-26 20:07:04
  * @FilePath: \Mall-system\src\views\user\Users.vue
 -->
 <template>
@@ -266,19 +266,41 @@ export default {
     handleCurrentChange(pagenum) {
       this.queryInfo.pagenum = pagenum
       this.getUserLIst()
-    }
+    },
 
     // 添加用户提交
-    //
+    addSubmitForm(formName) {
+      let that = this
+      // 表单校验
+      that.$refs[formName].validate((valid) => {
+        if (valid) {
+          // console.log(that.addForm)
+          // 调用添加用户接口
+          that.$api.post('users', that.addForm, (res) => {
+            if (res.meta.status !== 201) return that.$message.error('用户创建失败')
+            that.$message.success('用户创建成功')
+            that.addDialog = false
+            that.getUserLIst()
+          })
+        }
+      })
+    },
 
     // 初始化添加用户
-    //
+    addResetForm(formName) {
+      this.$refs[formName].resetFields()
+      this.addForm = {
+        username: '',
+        password: '',
+        email: '',
+        mobile: ''
+      }
+      this.addDialog = false
+    }
 
     // 修改用户状态
-    //
 
     // 展示修改弹框
-    //
 
     // 修改用户提交
 
