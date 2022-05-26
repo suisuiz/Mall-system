@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-05-13 18:31:38
  * @LastEditors: SUI
- * @LastEditTime: 2022-05-26 20:10:23
+ * @LastEditTime: 2022-05-26 20:11:43
  * @FilePath: \Mall-system\src\views\user\Users.vue
 -->
 <template>
@@ -356,9 +356,20 @@ export default {
       } catch (error) {
         that.$message.info('取消')
       }
-    }
+    },
 
     // 显示分配角色
+    setRole(userInfo) {
+      let that = this
+      that.userInfo = userInfo
+      // 获取角色列表
+      that.$api.get(`roles`, {}, (res) => {
+        if (res.meta.status !== 200) return that.$message.error('获取角色列表失败')
+        that.$message.success('获取角色列表成功')
+        that.rolesList = res.data
+        that.setRoleRightDialog = true
+      })
+    }
 
     // 保存角色
 
