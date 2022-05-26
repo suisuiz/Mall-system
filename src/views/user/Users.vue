@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-05-13 18:31:38
  * @LastEditors: SUI
- * @LastEditTime: 2022-05-26 20:07:04
+ * @LastEditTime: 2022-05-26 20:09:08
  * @FilePath: \Mall-system\src\views\user\Users.vue
 -->
 <template>
@@ -296,11 +296,29 @@ export default {
         mobile: ''
       }
       this.addDialog = false
-    }
+    },
 
     // 修改用户状态
+    userStateChanged(userInfo) {
+      let that = this
+      // 调用 修改用户状态 接口
+      that.$api.put(`users/${userInfo.id}/state/${userInfo.mg_state}`, {}, (res) => {
+        if (res.meta.status !== 200) return that.$message.error('设置状态失败')
+        that.$message.success('设置状态成功')
+      })
+    },
 
     // 展示修改弹框
+    showEditDialog(userId) {
+      let that = this
+      // 根据 ID 查询用户信息
+      that.$api.get(`users/${userId}`, {}, (res) => {
+        if (res.meta.status !== 200) return that.$message.error('查询信息失败')
+        that.$message.success('查询信息成功')
+        that.editForm = res.data
+        that.editDialog = true
+      })
+    }
 
     // 修改用户提交
 
