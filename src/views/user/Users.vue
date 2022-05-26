@@ -369,11 +369,34 @@ export default {
         that.rolesList = res.data
         that.setRoleRightDialog = true
       })
-    }
+    },
 
     // 保存角色
+    saveRoleInfo(selectedRoleId) {
+      let that = this
+      if (!selectedRoleId) {
+        that.$message.error('请选择新角色')
+        return
+      }
+      // 调用 保存角色 接口
+      let data = {
+        rid: selectedRoleId
+      }
+      that.$api.put(`users/${that.userInfo.id}/role`, data, (res) => {
+        if (res.meta.status !== 200) return that.$message.error('设置角色失败')
+        that.$message.success('设置角色成功')
+        that.getUserLIst()
+        that.setRoleRightDialog = false
+      })
+    },
 
     // 关闭分配角色弹框
+    setDialogClosed() {
+      // 初始化
+      this.setRoleRightDialog = false
+      this.selectedRoleId = ''
+      this.userInfo = {}
+    }
   }
 }
 </script>
