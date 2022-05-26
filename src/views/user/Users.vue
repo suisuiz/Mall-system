@@ -318,9 +318,24 @@ export default {
         that.editForm = res.data
         that.editDialog = true
       })
-    }
+    },
 
     // 修改用户提交
+    editSubmitForm(formName) {
+      let that = this
+      // 表单校验
+      that.$refs[formName].validate((valid) => {
+        if (valid) {
+          // 调用修改用户接口
+          that.$api.put(`users/${that.editForm.id}`, that.editForm, (res) => {
+            if (res.meta.status !== 200) return that.$message.error('修改用户失败')
+            that.$message.success('修改用户成功')
+            that.editDialog = false
+            that.getUserLIst()
+          })
+        }
+      })
+    }
 
     // 根据 ID 删除用户
 
