@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-05-13 18:31:38
  * @LastEditors: SUI
- * @LastEditTime: 2022-05-26 20:09:08
+ * @LastEditTime: 2022-05-26 20:10:23
  * @FilePath: \Mall-system\src\views\user\Users.vue
 -->
 <template>
@@ -335,9 +335,28 @@ export default {
           })
         }
       })
-    }
+    },
 
     // 根据 ID 删除用户
+    async removeUserById(userId) {
+      let that = this
+      try {
+        await that.$confirm('是否删除用户?', '提示', {
+          confirmButtonText: '删除',
+          cancelButtonText: '取消',
+          type: 'warning'
+        })
+
+        // 根据 ID 删除用户
+        that.$api.delete(`users/${userId}`, {}, (res) => {
+          if (res.meta.status !== 200) return that.$message.error('删除失败')
+          that.$message.success('删除成功')
+          that.getUserLIst()
+        })
+      } catch (error) {
+        that.$message.info('取消')
+      }
+    }
 
     // 显示分配角色
 
