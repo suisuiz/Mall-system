@@ -1,9 +1,9 @@
 <!--
- * @Descripttion: 
+ * @Descripttion: 角色列表
  * @Author: SUI
  * @Date: 2022-05-29 18:13:04
  * @LastEditors: SUI
- * @LastEditTime: 2022-05-29 18:16:27
+ * @LastEditTime: 2022-05-29 18:19:12
  * @FilePath: \Mall-system\src\views\power\Roles.vue
 -->
 <template>
@@ -11,11 +11,16 @@
 </template>
 
 <script>
-import { defineComponent } from '@vue/composition-api'
+export default {
+  name: 'Roles',
+  data() {
+    return {}
+  },
 
-export default defineComponent({
-  setup() {}
-})
+  created() {},
+
+  methods: {}
+}
 </script>
 
 <style scoped></style>
