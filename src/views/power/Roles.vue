@@ -11,8 +11,13 @@
 </template>
 
 <script>
+// 引入面包屑
+import Bread from '@/components/common/Bread'
 export default {
   name: 'Roles',
+  components: {
+    Bread
+  },
   data() {
     return {}
   },
