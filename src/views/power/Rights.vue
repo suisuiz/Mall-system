@@ -3,11 +3,14 @@
  * @Author: SUI
  * @Date: 2022-05-29 18:13:16
  * @LastEditors: SUI
- * @LastEditTime: 2022-05-30 18:37:42
+ * @LastEditTime: 2022-05-30 18:39:10
  * @FilePath: \Mall-system\src\views\power\Rights.vue
 -->
 <template>
-  <div></div>
+  <div>
+    <!-- 面包屑导航 -->
+    <Bread :title="breadTitle"></Bread>
+  </div>
 </template>
 
 <script>
@@ -19,7 +22,13 @@ export default {
     Bread
   },
   data() {
-    return {}
+    return {
+      // 面包屑标题
+      breadTitle: {
+        one: '权限管理',
+        two: '权限列表'
+      }
+    }
   },
 
   created() {},
