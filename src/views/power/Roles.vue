@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-05-29 18:13:04
  * @LastEditors: SUI
- * @LastEditTime: 2022-06-01 20:50:10
+ * @LastEditTime: 2022-06-01 20:51:25
  * @FilePath: \Mall-system\src\views\power\Roles.vue
 -->
 <template>
@@ -15,7 +15,6 @@
     <el-card class="box-card">
       <!-- 添加角色 -->
       <el-button type="primary" @click="addDialog = true">添加角色</el-button>
-
       <!-- 表格数据 -->
       <el-table :data="rolesList" border stripe>
         <!-- 展开行 -->
@@ -36,6 +35,12 @@
         </el-table-column>
       </el-table>
     </el-card>
+
+    <!-- 添加角色 -->
+
+    <!-- 编辑角色 -->
+
+    <!-- 角色授权 -->
   </div>
 </template>
 
