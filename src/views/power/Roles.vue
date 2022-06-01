@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-05-29 18:13:04
  * @LastEditors: SUI
- * @LastEditTime: 2022-06-01 20:46:10
+ * @LastEditTime: 2022-06-01 20:50:10
  * @FilePath: \Mall-system\src\views\power\Roles.vue
 -->
 <template>
@@ -80,4 +80,8 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.el-table {
+  margin-top: 15px;
+}
+</style>
