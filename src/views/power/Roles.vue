@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-05-29 18:13:04
  * @LastEditors: SUI
- * @LastEditTime: 2022-06-01 20:51:25
+ * @LastEditTime: 2022-06-01 20:52:55
  * @FilePath: \Mall-system\src\views\power\Roles.vue
 -->
 <template>
@@ -61,7 +61,33 @@ export default {
       },
 
       // 角色列表
-      rolesList: []
+      rolesList: [],
+
+      // 角色列表
+      rolesList: [],
+
+      // 添加角色表单
+      addDialog: false,
+      addForm: {
+        roleName: '',
+        roleDesc: ''
+      },
+
+      // 修改用户表单
+      editDialog: false,
+      editForm: {
+        id: '',
+        roleName: '',
+        roleDesc: ''
+      },
+
+      // 表单校验
+      formRules: {
+        roleName: [
+          { required: true, message: '请输入角色名称', trigger: 'blur' },
+          { min: 1, max: 10, message: '长度在 1 到 10 个字符', trigger: 'blur' }
+        ]
+      }
     }
   },
 
