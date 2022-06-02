@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-05-29 18:13:04
  * @LastEditors: SUI
- * @LastEditTime: 2022-06-01 20:52:55
+ * @LastEditTime: 2022-06-02 19:54:52
  * @FilePath: \Mall-system\src\views\power\Roles.vue
 -->
 <template>
@@ -15,6 +15,7 @@
     <el-card class="box-card">
       <!-- 添加角色 -->
       <el-button type="primary" @click="addDialog = true">添加角色</el-button>
+
       <!-- 表格数据 -->
       <el-table :data="rolesList" border stripe>
         <!-- 展开行 -->
@@ -37,6 +38,21 @@
     </el-card>
 
     <!-- 添加角色 -->
+    <el-dialog title="添加角色" width="35%" :visible.sync="addDialog" @close="addResetForm('addFormRef')">
+      <el-form ref="addFormRef" :model="addForm" :rules="formRules">
+        <!-- prop="roleName"  校验 -->
+        <el-form-item prop="roleName" label="角色名称" label-width="80px">
+          <el-input v-model="addForm.roleName" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="角色描述" label-width="80px">
+          <el-input v-model="addForm.roleDesc" autocomplete="off"></el-input>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="addResetForm('addFormRef')">取 消</el-button>
+        <el-button type="primary" @click="addSubmitForm('addFormRef')">添 加</el-button>
+      </div>
+    </el-dialog>
 
     <!-- 编辑角色 -->
 
