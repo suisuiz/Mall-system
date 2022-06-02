@@ -55,6 +55,21 @@
     </el-dialog>
 
     <!-- 编辑角色 -->
+    <el-dialog title="编辑角色" width="35%" :visible.sync="editDialog" @close="editDialog = false">
+      <el-form ref="editFormRef" :model="editForm" :rules="formRules">
+        <!-- prop="roleName"  校验 -->
+        <el-form-item prop="roleName" label="角色名称" label-width="80px">
+          <el-input v-model="editForm.roleName" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="角色描述" label-width="80px">
+          <el-input v-model="editForm.roleDesc" autocomplete="off"></el-input>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="editDialog = false">取 消</el-button>
+        <el-button type="primary" @click="editSubmitForm('editFormRef')">编 辑</el-button>
+      </div>
+    </el-dialog>
 
     <!-- 角色授权 -->
   </div>
