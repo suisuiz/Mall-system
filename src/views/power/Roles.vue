@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-05-29 18:13:04
  * @LastEditors: SUI
- * @LastEditTime: 2022-06-02 19:54:52
+ * @LastEditTime: 2022-06-03 22:22:25
  * @FilePath: \Mall-system\src\views\power\Roles.vue
 -->
 <template>
@@ -72,6 +72,18 @@
     </el-dialog>
 
     <!-- 角色授权 -->
+    <el-dialog title="分配权限" width="35%" :visible.sync="setRoleRightDialog" @close="setDialogClosed">
+      <!-- 
+        Tree 树形控件 展示
+        accordion 手风琴
+        show-checkbox	节点是否可被选择
+       -->
+      <el-tree :data="rightsList" :props="treeProps" accordion show-checkbox @check-change="handleCheckChange"> </el-tree>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="setRoleRightDialog = false">取 消</el-button>
+        <el-button type="primary" @click="saveRoleInfo">添 加</el-button>
+      </div>
+    </el-dialog>
   </div>
 </template>
 
