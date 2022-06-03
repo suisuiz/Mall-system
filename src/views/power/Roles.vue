@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-05-29 18:13:04
  * @LastEditors: SUI
- * @LastEditTime: 2022-06-03 22:22:25
+ * @LastEditTime: 2022-06-03 22:24:11
  * @FilePath: \Mall-system\src\views\power\Roles.vue
 -->
 <template>
@@ -130,7 +130,17 @@ export default {
           { required: true, message: '请输入角色名称', trigger: 'blur' },
           { min: 1, max: 10, message: '长度在 1 到 10 个字符', trigger: 'blur' }
         ]
-      }
+      },
+
+      // 所有权限列表
+      rightsList: [],
+      // 树形控件的数据绑定对象
+      treeProps: {
+        label: 'authName',
+        children: 'children'
+      },
+      // 分配权限显示
+      setRoleRightDialog: false
     }
   },
 
