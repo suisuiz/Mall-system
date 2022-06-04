@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-05-29 18:13:04
  * @LastEditors: SUI
- * @LastEditTime: 2022-06-04 21:17:54
+ * @LastEditTime: 2022-06-04 21:18:55
  * @FilePath: \Mall-system\src\views\power\Roles.vue
 -->
 <template>
@@ -187,7 +187,21 @@ export default {
         roleDesc: ''
       }
       this.addDialog = false
+    },
+
+    // 展示修改弹框
+    showEditDialog(userId) {
+      let that = this
+      // 根据 ID 查询角色信息
+      that.$api.get(`roles/${userId}`, {}, (res) => {
+        if (res.meta.status !== 200) return that.$message.error('查询信息失败')
+        that.$message.success('查询信息成功')
+        that.editForm = res.data
+        that.editDialog = true
+      })
     }
+
+    //
   }
 }
 </script>
