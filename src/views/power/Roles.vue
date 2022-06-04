@@ -199,9 +199,26 @@ export default {
         that.editForm = res.data
         that.editDialog = true
       })
+    },
+
+    // 修改角色提交
+    editSubmitForm(formName) {
+      let that = this
+      // 表单校验
+      that.$refs[formName].validate((valid) => {
+        if (valid) {
+          // 调用编辑角色接口
+          that.$api.put(`roles/${that.editForm.roleId}`, that.editForm, (res) => {
+            if (res.meta.status !== 200) return that.$message.error('修改用户失败')
+            that.$message.success('修改用户成功')
+            that.editDialog = false
+            that.getRolesList()
+          })
+        }
+      })
     }
 
-    //
+    // 根据 ID 删除角色
   }
 }
 </script>
