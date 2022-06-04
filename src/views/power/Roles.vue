@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-05-29 18:13:04
  * @LastEditors: SUI
- * @LastEditTime: 2022-06-04 21:16:30
+ * @LastEditTime: 2022-06-04 21:17:54
  * @FilePath: \Mall-system\src\views\power\Roles.vue
 -->
 <template>
@@ -178,6 +178,7 @@ export default {
         }
       })
     },
+
     // 初始化添加角色
     addResetForm(formName) {
       this.$refs[formName].resetFields()
