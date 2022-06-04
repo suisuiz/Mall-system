@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-05-29 18:13:04
  * @LastEditors: SUI
- * @LastEditTime: 2022-06-03 22:24:11
+ * @LastEditTime: 2022-06-04 21:16:30
  * @FilePath: \Mall-system\src\views\power\Roles.vue
 -->
 <template>
@@ -159,6 +159,33 @@ export default {
         that.$message.success('获取角色列表成功')
         that.rolesList = res.data
       })
+    },
+
+    // 添加角色提交
+    addSubmitForm(formName) {
+      let that = this
+      // 表单校验
+      that.$refs[formName].validate((valid) => {
+        if (valid) {
+          // console.log(that.addForm)
+          // 调用添加角色接口
+          that.$api.post('roles', that.addForm, (res) => {
+            if (res.meta.status !== 201) return that.$message.error('添加角色失败')
+            that.$message.success('添加角色成功')
+            that.addDialog = false
+            that.getRolesList()
+          })
+        }
+      })
+    },
+    // 初始化添加角色
+    addResetForm(formName) {
+      this.$refs[formName].resetFields()
+      this.addForm = {
+        roleName: '',
+        roleDesc: ''
+      }
+      this.addDialog = false
     }
   }
 }
