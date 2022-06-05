@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-05-29 18:13:04
  * @LastEditors: SUI
- * @LastEditTime: 2022-06-04 21:18:55
+ * @LastEditTime: 2022-06-05 21:33:22
  * @FilePath: \Mall-system\src\views\power\Roles.vue
 -->
 <template>
@@ -216,9 +216,30 @@ export default {
           })
         }
       })
-    }
+    },
 
     // 根据 ID 删除角色
+    async removeUserById(userId) {
+      let that = this
+      try {
+        await that.$confirm('是否删除角色?', '提示', {
+          confirmButtonText: '删除',
+          cancelButtonText: '取消',
+          type: 'warning'
+        })
+
+        // 根据 ID 删除角色
+        that.$api.delete(`roles/${userId}`, {}, (res) => {
+          if (res.meta.status !== 200) return that.$message.error('删除失败')
+          that.$message.success('删除成功')
+          that.getRolesList()
+        })
+      } catch (error) {
+        that.$message.info('取消')
+      }
+    }
+
+    // 角色授权展示
   }
 }
 </script>
