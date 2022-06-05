@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-05-29 18:13:04
  * @LastEditors: SUI
- * @LastEditTime: 2022-06-05 21:33:22
+ * @LastEditTime: 2022-06-05 21:34:36
  * @FilePath: \Mall-system\src\views\power\Roles.vue
 -->
 <template>
@@ -251,7 +251,34 @@ export default {
       })
     },
 
-    handleCheckChange() {}
+    handleCheckChange() {},
+
+    // 角色授权
+    saveRoleInfo() {
+      // let that = this
+      // if (!selectedRoleId) {
+      //   that.$message.error('请选择权限')
+      //   return
+      // }
+      // 调用 角色授权 接口
+      // let data = {
+      //   rid: selectedRoleId
+      // }
+      // that.$api.put(`roles/${that.userInfo.id}/rights`, data, (res) => {
+      //   if (res.meta.status !== 200) return that.$message.error('角色授权失败')
+      //   that.$message.success('角色授权成功')
+      //   that.getRolesList()
+      //   that.setRoleRightDialog = false
+      // })
+    },
+
+    // 关闭角色授权弹框
+    setDialogClosed() {
+      // 初始化
+      this.setRoleRightDialog = false
+      // this.selectedRoleId = ''
+      // this.userInfo = {}
+    }
   }
 }
 </script>
