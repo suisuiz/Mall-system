@@ -237,9 +237,21 @@ export default {
       } catch (error) {
         that.$message.info('取消')
       }
-    }
+    },
 
     // 角色授权展示
+    setRole(userInfo) {
+      let that = this
+      console.log(userInfo)
+      that.$api.get('rights/tree', {}, (res) => {
+        if (res.meta.status !== 200) return that.$message.error('获取权限列表失败')
+        that.$message.success('获取权限列表成功')
+        that.rightsList = res.data
+        that.setRoleRightDialog = true
+      })
+    },
+
+    handleCheckChange() {}
   }
 }
 </script>
