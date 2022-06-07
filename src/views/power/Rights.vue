@@ -45,7 +45,12 @@ export default {
       breadTitle: {
         one: '权限管理',
         two: '权限列表'
-      }
+      },
+
+      // 列表展示
+      rightsList: [],
+      // 添加
+      addDialog: false
     }
   },
 
