@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-05-29 18:13:16
  * @LastEditors: SUI
- * @LastEditTime: 2022-06-07 18:03:33
+ * @LastEditTime: 2022-06-07 18:05:28
  * @FilePath: \Mall-system\src\views\power\Rights.vue
 -->
 <template>
@@ -54,9 +54,23 @@ export default {
     }
   },
 
-  created() {},
+  created() {
+    // 获取权限列表
+    this.getRightsList()
+  },
 
-  methods: {}
+  methods: {
+    // 列表
+    getRightsList() {
+      let that = this
+      // 所有权限列表  列表显示权限
+      that.$api.get('rights/list', {}, (res) => {
+        if (res.meta.status !== 200) return that.$message.error('获取权限列表失败')
+        that.$message.success('获取权限列表成功')
+        that.rightsList = res.data
+      })
+    }
+  }
 }
 </script>
 
