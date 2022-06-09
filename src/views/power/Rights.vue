@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-05-29 18:13:16
  * @LastEditors: SUI
- * @LastEditTime: 2022-06-07 18:05:28
+ * @LastEditTime: 2022-06-09 19:01:43
  * @FilePath: \Mall-system\src\views\power\Rights.vue
 -->
 <template>
