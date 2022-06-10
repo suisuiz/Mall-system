@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-05-29 18:13:04
  * @LastEditors: SUI
- * @LastEditTime: 2022-06-09 19:02:39
+ * @LastEditTime: 2022-06-10 19:12:14
  * @FilePath: \Mall-system\src\views\power\Roles.vue
 -->
 <template>
@@ -276,8 +276,8 @@ export default {
     setDialogClosed() {
       // 初始化
       this.setRoleRightDialog = false
-      // this.selectedRoleId = ''
-      // this.userInfo = {}
+      this.selectedRoleId = ''
+      this.userInfo = {}
     }
   }
 }
