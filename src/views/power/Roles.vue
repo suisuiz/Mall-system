@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-05-29 18:13:04
  * @LastEditors: SUI
- * @LastEditTime: 2022-06-10 19:12:14
+ * @LastEditTime: 2022-06-13 15:55:41
  * @FilePath: \Mall-system\src\views\power\Roles.vue
 -->
 <template>
@@ -93,14 +93,14 @@ import Bread from '@/components/common/Bread'
 export default {
   name: 'Roles',
   components: {
-    Bread
+    Bread,
   },
   data() {
     return {
       // 面包屑标题
       breadTitle: {
         one: '权限管理',
-        two: '角色列表'
+        two: '角色列表',
       },
 
       // 角色列表
@@ -113,7 +113,7 @@ export default {
       addDialog: false,
       addForm: {
         roleName: '',
-        roleDesc: ''
+        roleDesc: '',
       },
 
       // 修改用户表单
@@ -121,15 +121,15 @@ export default {
       editForm: {
         id: '',
         roleName: '',
-        roleDesc: ''
+        roleDesc: '',
       },
 
       // 表单校验
       formRules: {
         roleName: [
           { required: true, message: '请输入角色名称', trigger: 'blur' },
-          { min: 1, max: 10, message: '长度在 1 到 10 个字符', trigger: 'blur' }
-        ]
+          { min: 1, max: 10, message: '长度在 1 到 10 个字符', trigger: 'blur' },
+        ],
       },
 
       // 所有权限列表
@@ -137,10 +137,10 @@ export default {
       // 树形控件的数据绑定对象
       treeProps: {
         label: 'authName',
-        children: 'children'
+        children: 'children',
       },
       // 分配权限显示
-      setRoleRightDialog: false
+      setRoleRightDialog: false,
     }
   },
 
@@ -184,7 +184,7 @@ export default {
       this.$refs[formName].resetFields()
       this.addForm = {
         roleName: '',
-        roleDesc: ''
+        roleDesc: '',
       }
       this.addDialog = false
     },
@@ -225,7 +225,7 @@ export default {
         await that.$confirm('是否删除角色?', '提示', {
           confirmButtonText: '删除',
           cancelButtonText: '取消',
-          type: 'warning'
+          type: 'warning',
         })
 
         // 根据 ID 删除角色
@@ -262,7 +262,7 @@ export default {
       }
       // 调用 角色授权 接口
       let data = {
-        rid: selectedRoleId
+        rid: selectedRoleId,
       }
       that.$api.put(`roles/${that.userInfo.id}/rights`, data, (res) => {
         if (res.meta.status !== 200) return that.$message.error('角色授权失败')
@@ -278,8 +278,8 @@ export default {
       this.setRoleRightDialog = false
       this.selectedRoleId = ''
       this.userInfo = {}
-    }
-  }
+    },
+  },
 }
 </script>
 
