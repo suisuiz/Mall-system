@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-05-29 18:13:04
  * @LastEditors: SUI
- * @LastEditTime: 2022-06-13 15:55:41
+ * @LastEditTime: 2022-06-13 15:56:55
  * @FilePath: \Mall-system\src\views\power\Roles.vue
 -->
 <template>
@@ -19,7 +19,33 @@
       <!-- 表格数据 -->
       <el-table :data="rolesList" border stripe>
         <!-- 展开行 -->
-        <el-table-column type="expand"></el-table-column>
+        <el-table-column type="expand">
+          <!-- scope.row 展示一列的信息 -->
+          <template slot-scope="scope">
+            <!-- 动态加类 -->
+            <el-row :class="['border-bottom', index === 0 ? 'border-top' : '']" type="flex" align="middle" v-for="(items, index) in scope.row.children" :key="items.id">
+              <!-- 渲染一级权限 -->
+              <el-col :span="5">
+                <el-tag closable @close="removeRightById(scope.row, items.id)">{{ items.authName }}</el-tag>
+                <i class="el-icon-caret-right"></i>
+              </el-col>
+              <!-- 渲染二级、三级权限 -->
+              <el-col :span="19">
+                <el-row :class="[i === 0 ? '' : 'border-top']" type="flex" align="middle" v-for="(keys, i) in items.children" :key="keys.id">
+                  <!-- 二级权限 -->
+                  <el-col :span="5">
+                    <el-tag closable type="success" @close="removeRightById(scope.row, keys.id)">{{ keys.authName }}</el-tag>
+                    <i class="el-icon-caret-right"></i>
+                  </el-col>
+                  <!-- 三级权限 -->
+                  <el-col :span="19">
+                    <el-tag v-for="value in keys.children" :key="value.id" closable type="warning" @close="removeRightById(scope.row, value.id)">{{ value.authName }}</el-tag>
+                  </el-col>
+                </el-row>
+              </el-col>
+            </el-row>
+          </template>
+        </el-table-column>
         <el-table-column type="index" label="#"></el-table-column>
         <el-table-column label="角色名称" prop="roleName"></el-table-column>
         <el-table-column label="角色描述" prop="roleDesc"></el-table-column>
