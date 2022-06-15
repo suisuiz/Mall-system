@@ -287,35 +287,35 @@ export default {
       }
     },
 
-    // // 角色授权展示 先反显赋值，在修改
-    // setRole(userInfo) {
-    //   let that = this
-    //   // console.log(userInfo)
-    //   // 角色的ID
-    //   that.roleId = userInfo.id
-    //   that.$api.get('rights/tree', {}, (res) => {
-    //     if (res.meta.status !== 200) return that.$message.error('获取权限列表失败')
-    //     that.$message.success('获取权限列表成功')
-    //     that.rightsList = res.data
-    //     // 递归获取三级节点的ID
-    //     that.getLeafKeys(userInfo, that.defKeys)
+    // 角色授权展示 先反显赋值，在修改
+    setRole(userInfo) {
+      let that = this
+      // console.log(userInfo)
+      // 角色的ID
+      that.roleId = userInfo.id
+      that.$api.get('rights/tree', {}, (res) => {
+        if (res.meta.status !== 200) return that.$message.error('获取权限列表失败')
+        that.$message.success('获取权限列表成功')
+        that.rightsList = res.data
+        // 递归获取三级节点的ID
+        that.getLeafKeys(userInfo, that.defKeys)
 
-    //     that.setRoleRightDialog = true
-    //   })
-    // },
+        that.setRoleRightDialog = true
+      })
+    },
 
-    // // 通过递归的形式获取角色下所有三级权限，并保存至defKeys
-    // getLeafKeys(node, arr) {
-    //   let that = this
-    //   // 判断 node节点 是否包含三级节点，如果不包含，直接存id到数组
-    //   if (!node.children) {
-    //     return arr.push(node.id)
-    //   }
+    // 通过递归的形式获取角色下所有三级权限，并保存至defKeys
+    getLeafKeys(node, arr) {
+      let that = this
+      // 判断 node节点 是否包含三级节点，如果不包含，直接存id到数组
+      if (!node.children) {
+        return arr.push(node.id)
+      }
 
-    //   node.children.forEach((item) => {
-    //     that.getLeafKeys(item, arr)
-    //   })
-    // },
+      node.children.forEach((item) => {
+        that.getLeafKeys(item, arr)
+      })
+    },
 
     // // 点击为角色授权
     // saveRoleInfo() {
