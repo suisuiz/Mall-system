@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-05-29 18:13:04
  * @LastEditors: SUI
- * @LastEditTime: 2022-06-15 09:01:29
+ * @LastEditTime: 2022-06-15 09:02:44
  * @FilePath: \Mall-system\src\views\power\Roles.vue
 -->
 <template>
@@ -120,9 +120,7 @@
 import Bread from '@/components/common/Bread'
 export default {
   name: 'Roles',
-  components: {
-    Bread,
-  },
+  components: { Bread },
   data() {
     return {
       // 面包屑标题
@@ -130,9 +128,6 @@ export default {
         one: '权限管理',
         two: '角色列表',
       },
-
-      // 角色列表
-      rolesList: [],
 
       // 角色列表
       rolesList: [],
@@ -160,15 +155,19 @@ export default {
         ],
       },
 
+      // 分配权限显示
+      setRoleRightDialog: false,
       // 所有权限列表
       rightsList: [],
-      // 树形控件的数据绑定对象
+      // 树形控件的属性绑定对象
       treeProps: {
         label: 'authName',
         children: 'children',
       },
-      // 分配权限显示
-      setRoleRightDialog: false,
+      // 默认选中的节点id值数组
+      defKeys: [],
+      //当前分配权限的角色ID
+      roleId: '',
     }
   },
 
