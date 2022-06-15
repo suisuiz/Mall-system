@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-05-29 18:13:04
  * @LastEditors: SUI
- * @LastEditTime: 2022-06-15 09:00:14
+ * @LastEditTime: 2022-06-15 09:01:29
  * @FilePath: \Mall-system\src\views\power\Roles.vue
 -->
 <template>
@@ -100,12 +100,15 @@
     <el-dialog title="分配权限" width="35%" :visible.sync="setRoleRightDialog" @close="setDialogClosed">
       <!-- 
         Tree 树形控件 展示
+        node-key  每个树节点用来作为唯一标识的属性，整棵树应该是唯一的
+        default-checked-keys	默认勾选的节点的 key 的数组
+        default-expand-all 默认展开所有节点
         accordion 手风琴
         show-checkbox	节点是否可被选择
        -->
-      <el-tree :data="rightsList" :props="treeProps" accordion show-checkbox @check-change="handleCheckChange"> </el-tree>
+      <el-tree ref="treeRef" :data="rightsList" :props="treeProps" node-key="id" :default-checked-keys="defKeys" default-expand-all accordion show-checkbox> </el-tree>
       <div slot="footer" class="dialog-footer">
-        <el-button @click="setRoleRightDialog = false">取 消</el-button>
+        <el-button @click="setDialogClosed">取 消</el-button>
         <el-button type="primary" @click="saveRoleInfo">添 加</el-button>
       </div>
     </el-dialog>
