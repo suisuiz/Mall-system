@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-05-29 18:13:04
  * @LastEditors: SUI
- * @LastEditTime: 2022-06-15 09:02:44
+ * @LastEditTime: 2022-06-15 09:05:06
  * @FilePath: \Mall-system\src\views\power\Roles.vue
 -->
 <template>
@@ -188,6 +188,28 @@ export default {
       })
     },
 
+    // 删除角色指定权限
+    async removeRightById(role, rightId) {
+      let that = this
+      try {
+        await that.$confirm('是否删除角色权限?', '提示', {
+          confirmButtonText: '删除',
+          cancelButtonText: '取消',
+          type: 'warning',
+        })
+
+        // 删除角色指定权限
+        that.$api.delete(`roles/${role.id}/rights/${rightId}`, {}, (res) => {
+          if (res.meta.status !== 200) return that.$message.error('取消权限失败')
+          that.$message.success('取消权限成功')
+          // 为了不重新渲染页面直接更新行
+          role.children = res.data
+        })
+      } catch (error) {
+        that.$message.info('取消')
+      }
+    },
+
     // 添加角色提交
     addSubmitForm(formName) {
       let that = this
@@ -205,7 +227,6 @@ export default {
         }
       })
     },
-
     // 初始化添加角色
     addResetForm(formName) {
       this.$refs[formName].resetFields()
@@ -266,46 +287,66 @@ export default {
       }
     },
 
-    // 角色授权展示
-    setRole(userInfo) {
-      let that = this
-      console.log(userInfo)
-      that.$api.get('rights/tree', {}, (res) => {
-        if (res.meta.status !== 200) return that.$message.error('获取权限列表失败')
-        that.$message.success('获取权限列表成功')
-        that.rightsList = res.data
-        that.setRoleRightDialog = true
-      })
-    },
+    // // 角色授权展示 先反显赋值，在修改
+    // setRole(userInfo) {
+    //   let that = this
+    //   // console.log(userInfo)
+    //   // 角色的ID
+    //   that.roleId = userInfo.id
+    //   that.$api.get('rights/tree', {}, (res) => {
+    //     if (res.meta.status !== 200) return that.$message.error('获取权限列表失败')
+    //     that.$message.success('获取权限列表成功')
+    //     that.rightsList = res.data
+    //     // 递归获取三级节点的ID
+    //     that.getLeafKeys(userInfo, that.defKeys)
 
-    handleCheckChange() {},
+    //     that.setRoleRightDialog = true
+    //   })
+    // },
 
-    // 角色授权
-    saveRoleInfo() {
-      let that = this
-      if (!selectedRoleId) {
-        that.$message.error('请选择权限')
-        return
-      }
-      // 调用 角色授权 接口
-      let data = {
-        rid: selectedRoleId,
-      }
-      that.$api.put(`roles/${that.userInfo.id}/rights`, data, (res) => {
-        if (res.meta.status !== 200) return that.$message.error('角色授权失败')
-        that.$message.success('角色授权成功')
-        that.getRolesList()
-        that.setRoleRightDialog = false
-      })
-    },
+    // // 通过递归的形式获取角色下所有三级权限，并保存至defKeys
+    // getLeafKeys(node, arr) {
+    //   let that = this
+    //   // 判断 node节点 是否包含三级节点，如果不包含，直接存id到数组
+    //   if (!node.children) {
+    //     return arr.push(node.id)
+    //   }
 
-    // 关闭角色授权弹框
-    setDialogClosed() {
-      // 初始化
-      this.setRoleRightDialog = false
-      this.selectedRoleId = ''
-      this.userInfo = {}
-    },
+    //   node.children.forEach((item) => {
+    //     that.getLeafKeys(item, arr)
+    //   })
+    // },
+
+    // // 点击为角色授权
+    // saveRoleInfo() {
+    //   let that = this
+    //   // 获取 选中的 ID tree this.$refs.xxx.getCheckedKeys()
+    //   // 获取 半选中的 ID tree this.$refs.xxx.getHalfCheckedNodes()
+    //   const keys = [...that.$refs.treeRef.getCheckedKeys(), ...that.$refs.treeRef.getHalfCheckedKeys()]
+    //   // console.log(keys)
+
+    //   // 分割的权限 ID 列表（获取所有被选中、叶子节点的key和半选中节点的key, 包括 1，2，3级节点）
+    //   const ridsIdStr = keys.join(',')
+
+    //   // 调用 角色授权 接口
+    //   let data = {
+    //     rids: ridsIdStr,
+    //   }
+    //   that.$api.post(`roles/${that.roleId}/rights`, data, (res) => {
+    //     if (res.meta.status !== 200) return that.$message.error('角色授权失败')
+    //     that.$message.success('角色授权成功')
+    //     that.getRolesList()
+    //     that.setRoleRightDialog = false
+    //   })
+    // },
+
+    // // 关闭角色授权弹框
+    // setDialogClosed() {
+    //   // 初始化
+    //   this.defKeys = []
+    //   this.roleId = ''
+    //   this.setRoleRightDialog = false
+    // },
   },
 }
 </script>
