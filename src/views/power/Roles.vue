@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-05-29 18:13:04
  * @LastEditors: SUI
- * @LastEditTime: 2022-06-13 15:56:55
+ * @LastEditTime: 2022-06-15 09:00:14
  * @FilePath: \Mall-system\src\views\power\Roles.vue
 -->
 <template>
@@ -46,18 +46,17 @@
             </el-row>
           </template>
         </el-table-column>
+        <!-- 索引 -->
         <el-table-column type="index" label="#"></el-table-column>
         <el-table-column label="角色名称" prop="roleName"></el-table-column>
         <el-table-column label="角色描述" prop="roleDesc"></el-table-column>
         <el-table-column label="操作">
           <!-- scope.row 展示一列的信息 -->
           <template slot-scope="scope">
-            <el-button size="mini" type="primary" icon="el-icon-edit" @click="showEditDialog(scope.row.id)"></el-button>
-            <el-button size="mini" type="danger" icon="el-icon-delete" @click="removeUserById(scope.row.id)"></el-button>
+            <el-button size="mini" type="primary" icon="el-icon-edit" @click="showEditDialog(scope.row.id)">编辑</el-button>
+            <el-button size="mini" type="danger" icon="el-icon-delete" @click="removeUserById(scope.row.id)">删除</el-button>
             <!-- 文字提示 -->
-            <el-tooltip effect="dark" content="分配权限" placement="top" :enterable="false">
-              <el-button size="mini" type="warning" icon="el-icon-setting" @click="setRole(scope.row)"></el-button>
-            </el-tooltip>
+            <el-button size="mini" type="warning" icon="el-icon-setting" @click="setRole(scope.row)">分配权限</el-button>
           </template>
         </el-table-column>
       </el-table>
