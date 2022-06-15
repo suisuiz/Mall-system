@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-05-29 18:13:04
  * @LastEditors: SUI
- * @LastEditTime: 2022-06-15 09:05:06
+ * @LastEditTime: 2022-06-15 09:06:50
  * @FilePath: \Mall-system\src\views\power\Roles.vue
 -->
 <template>
@@ -317,36 +317,36 @@ export default {
       })
     },
 
-    // // 点击为角色授权
-    // saveRoleInfo() {
-    //   let that = this
-    //   // 获取 选中的 ID tree this.$refs.xxx.getCheckedKeys()
-    //   // 获取 半选中的 ID tree this.$refs.xxx.getHalfCheckedNodes()
-    //   const keys = [...that.$refs.treeRef.getCheckedKeys(), ...that.$refs.treeRef.getHalfCheckedKeys()]
-    //   // console.log(keys)
+    // 点击为角色授权
+    saveRoleInfo() {
+      let that = this
+      // 获取 选中的 ID tree this.$refs.xxx.getCheckedKeys()
+      // 获取 半选中的 ID tree this.$refs.xxx.getHalfCheckedNodes()
+      const keys = [...that.$refs.treeRef.getCheckedKeys(), ...that.$refs.treeRef.getHalfCheckedKeys()]
+      // console.log(keys)
 
-    //   // 分割的权限 ID 列表（获取所有被选中、叶子节点的key和半选中节点的key, 包括 1，2，3级节点）
-    //   const ridsIdStr = keys.join(',')
+      // 分割的权限 ID 列表（获取所有被选中、叶子节点的key和半选中节点的key, 包括 1，2，3级节点）
+      const ridsIdStr = keys.join(',')
 
-    //   // 调用 角色授权 接口
-    //   let data = {
-    //     rids: ridsIdStr,
-    //   }
-    //   that.$api.post(`roles/${that.roleId}/rights`, data, (res) => {
-    //     if (res.meta.status !== 200) return that.$message.error('角色授权失败')
-    //     that.$message.success('角色授权成功')
-    //     that.getRolesList()
-    //     that.setRoleRightDialog = false
-    //   })
-    // },
+      // 调用 角色授权 接口
+      let data = {
+        rids: ridsIdStr,
+      }
+      that.$api.post(`roles/${that.roleId}/rights`, data, (res) => {
+        if (res.meta.status !== 200) return that.$message.error('角色授权失败')
+        that.$message.success('角色授权成功')
+        that.getRolesList()
+        that.setRoleRightDialog = false
+      })
+    },
 
-    // // 关闭角色授权弹框
-    // setDialogClosed() {
-    //   // 初始化
-    //   this.defKeys = []
-    //   this.roleId = ''
-    //   this.setRoleRightDialog = false
-    // },
+    // 关闭角色授权弹框
+    setDialogClosed() {
+      // 初始化
+      this.defKeys = []
+      this.roleId = ''
+      this.setRoleRightDialog = false
+    },
   },
 }
 </script>
