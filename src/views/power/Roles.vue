@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-05-29 18:13:04
  * @LastEditors: SUI
- * @LastEditTime: 2022-06-15 09:06:50
+ * @LastEditTime: 2022-06-16 14:03:56
  * @FilePath: \Mall-system\src\views\power\Roles.vue
 -->
 <template>
@@ -351,8 +351,18 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .el-table {
   margin-top: 15px;
+}
+
+.el-tag {
+  margin: 7px;
+}
+.border-top {
+  border-top: solid 1px #eee;
+}
+.border-bottom {
+  border-bottom: solid 1px #eee;
 }
 </style>
