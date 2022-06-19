@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-06-18 22:56:44
  * @LastEditors: SUI
- * @LastEditTime: 2022-06-19 22:48:18
+ * @LastEditTime: 2022-06-19 22:49:56
  * @FilePath: \Mall-system\src\views\goods\Add.vue
 -->
 <template>
@@ -16,8 +16,13 @@
   </div>
 </template>
 <script>
+// 引入面包屑
+import Bread from '@/components/common/Bread'
 export default {
   name: 'Add',
+
+  components: { Bread },
+
   data() {
     return {}
   },
