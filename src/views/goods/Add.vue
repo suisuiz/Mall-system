@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-06-18 22:56:44
  * @LastEditors: SUI
- * @LastEditTime: 2022-06-19 22:49:56
+ * @LastEditTime: 2022-06-20 09:23:17
  * @FilePath: \Mall-system\src\views\goods\Add.vue
 -->
 <template>
@@ -24,7 +24,13 @@ export default {
   components: { Bread },
 
   data() {
-    return {}
+    return {
+      // 面包屑标题
+      breadTitle: {
+        one: 'xxx',
+        two: 'xxx',
+      },
+    }
   },
 
   created() {},
