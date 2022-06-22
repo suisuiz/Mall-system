@@ -8,6 +8,8 @@
 -->
 <template>
   <div>
+    <!-- 面包屑导航 -->
+    <Bread :title="breadTitle"></Bread>
     <!-- 内容展示卡片 -->
     <el-card class="box-card"> </el-card>
   </div>
