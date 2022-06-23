@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-05-12 09:23:13
  * @LastEditors: SUI
- * @LastEditTime: 2022-06-23 14:29:12
+ * @LastEditTime: 2022-06-23 14:34:18
  * @FilePath: \Mall-system\src\router\index.js
  */
 import Vue from 'vue'
@@ -56,6 +56,10 @@ const routes = [{
       {
         path: '/params',
         component: () => import('@/views/goods/Params')
+      },
+      {
+        path: '/categories',
+        component: () => import('@/views/goods/Cate')
       },
     ]
   },

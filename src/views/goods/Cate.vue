@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-06-20 09:26:26
  * @LastEditors: SUI
- * @LastEditTime: 2022-06-22 16:50:40
+ * @LastEditTime: 2022-06-23 14:34:57
  * @FilePath: \Mall-system\src\views\goods\Cate.vue
 -->
 <template>
@@ -15,9 +15,20 @@
   </div>
 </template>
 <script>
+// 引入面包屑
+import Bread from '@/components/common/Bread'
 export default {
+  name: 'Cate',
+  components: { Bread },
+
   data() {
-    return {}
+    return {
+      // 面包屑标题
+      breadTitle: {
+        one: '商品管理',
+        two: '商品分类',
+      },
+    }
   },
 
   created() {},
