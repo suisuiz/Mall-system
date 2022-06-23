@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-06-22 16:55:01
  * @LastEditors: SUI
- * @LastEditTime: 2022-06-23 14:36:59
+ * @LastEditTime: 2022-06-23 14:38:30
  * @FilePath: \Mall-system\src\views\goods\Params.vue
 -->
 <template>
@@ -19,7 +19,7 @@
 // 引入面包屑
 import Bread from '@/components/common/Bread'
 export default {
-  name: 'Goods',
+  name: 'Params',
   components: {
     Bread,
   },
