@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-06-22 16:54:14
  * @LastEditors: SUI
- * @LastEditTime: 2022-06-27 10:16:42
+ * @LastEditTime: 2022-06-27 10:17:58
  * @FilePath: \Mall-system\src\views\goods\Goods.vue
 -->
 <template>
@@ -74,6 +74,20 @@ export default {
         one: '商品管理',
         two: '商品列表',
       },
+
+      // 请求参数
+      queryInfo: {
+        // 查询参数
+        query: '',
+        // 当前页数
+        pagenum: 1,
+        // 每页显示条数
+        pagesize: 10,
+      },
+      // 商品列表数据
+      goodsList: [],
+      // 商品总数
+      totalpage: 0,
     }
   },
 
