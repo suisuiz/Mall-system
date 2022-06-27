@@ -91,9 +91,28 @@ export default {
     }
   },
 
-  created() {},
+  created() {
+    // 获取商品数据
+    this.getGoodsList()
+  },
 
-  methods: {},
+  methods: {
+    // 获取商品列表数据
+    getGoodsList() {
+      let that = this
+      that.$api.get('goods', that.queryInfo, (res) => {
+        if (res.meta.status !== 200) return that.$message.error(res.meta.msg)
+        that.$message.success('获取商品列表数据成功')
+        // console.log(res.data)
+        // 当前页数
+        that.queryInfo.pagenum = res.data.pagenum * 1
+        // 商品总数
+        that.totalpage = res.data.total
+        // 商品列表
+        that.goodsList = res.data.goods
+      })
+    },
+  },
 }
 </script>
 
