@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-06-22 16:54:14
  * @LastEditors: SUI
- * @LastEditTime: 2022-06-28 10:51:30
+ * @LastEditTime: 2022-06-28 10:52:58
  * @FilePath: \Mall-system\src\views\goods\Goods.vue
 -->
 <template>
@@ -161,4 +161,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.el-table {
+  margin-top: 15px;
+}
+</style>
