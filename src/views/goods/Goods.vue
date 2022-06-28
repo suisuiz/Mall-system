@@ -136,6 +136,27 @@ export default {
     showEditDialog(id) {
       console.log(id)
     },
+
+    // 删除商品
+    async removeGoodsById(id) {
+      let that = this
+      try {
+        await that.$confirm('是否删除商品?', '提示', {
+          confirmButtonText: '删除',
+          cancelButtonText: '取消',
+          type: 'warning',
+        })
+
+        // 根据 ID 删除用户
+        that.$api.delete(`goods/${id}`, {}, (res) => {
+          if (res.meta.status !== 200) return that.$message.error('删除失败')
+          that.$message.success('删除成功')
+          that.getGoodsList()
+        })
+      } catch (error) {
+        that.$message.info('取消')
+      }
+    },
   },
 }
 </script>
