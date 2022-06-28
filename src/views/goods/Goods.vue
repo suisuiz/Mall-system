@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-06-22 16:54:14
  * @LastEditors: SUI
- * @LastEditTime: 2022-06-27 10:17:58
+ * @LastEditTime: 2022-06-28 10:51:30
  * @FilePath: \Mall-system\src\views\goods\Goods.vue
 -->
 <template>
@@ -111,6 +111,30 @@ export default {
         // 商品列表
         that.goodsList = res.data.goods
       })
+    },
+
+    // 监听分页 改变条数
+    handleSizeChange(pagesize) {
+      console.log(pagesize)
+      this.queryInfo.pagesize = pagesize
+      this.getGoodsList()
+    },
+
+    // 监听分页 改变页数
+    handleCurrentChange(pagenum) {
+      this.queryInfo.pagenum = pagenum
+      this.getGoodsList()
+    },
+
+    // 添加商品
+    addGoods() {
+      // 跳转添加商品页面
+      this.$router.push('/goods/add')
+    },
+
+    // 显示编辑框
+    showEditDialog(id) {
+      console.log(id)
     },
   },
 }
