@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-06-18 22:56:44
  * @LastEditors: SUI
- * @LastEditTime: 2022-06-29 14:22:00
+ * @LastEditTime: 2022-06-29 14:32:52
  * @FilePath: \Mall-system\src\views\goods\Add.vue
 -->
 <template>
@@ -97,6 +97,9 @@
 <script>
 // 引入面包屑
 import Bread from '@/components/common/Bread'
+
+// 引入 lodash
+import _ from 'lodash'
 export default {
   name: 'Add',
 
@@ -105,12 +108,59 @@ export default {
   data() {
     return {
       // 面包屑标题
-      breadTitle: {
-        one: 'xxx',
-        two: 'xxx',
+      breadTitle: { one: '商品列表', two: '添加商品' },
+
+      // 步骤条当前位置
+      activeIndex: '0',
+      // 添加表单的数据对象
+      addForm: {
+        goods_name: '',
+        goods_price: 0,
+        goods_number: 0,
+        goods_weight: 0,
+        // 商品所属的分类数组
+        goods_cat: [],
+        // 上传图片的临时路径
+        pics: [],
+        // 商品的详情描述
+        goods_introduce: '',
+        // 商品的参数，包含静态参数和动态属性
+        attrs: [],
       },
+      // 验证规则
+      rules: {
+        goods_name: [{ required: true, message: '请输入商品名称', trigger: 'blur' }],
+        goods_price: [{ required: true, message: '请输入商品价格', trigger: 'blur' }],
+        goods_number: [{ required: true, message: '请输入商品数量', trigger: 'blur' }],
+        goods_weight: [{ required: true, message: '请输入商品重量', trigger: 'blur' }],
+        goods_cat: [{ required: true, message: '请选择商品分类', trigger: 'blur' }],
+      },
+
+      // 商品分类列表
+      cateList: [],
+      // 配置
+      cateProps: {
+        expandTrigger: 'hover',
+        label: 'cat_name',
+        value: 'cat_id',
+        children: 'children',
+      },
+
+      // 参数列表数据
+      manyTableData: [],
+      // 静态属性
+      onlyTableDate: [],
+
+      // 上传图片的url地址
+      uploadUrl: 'http://www.ysqorz.top:8888/api/private/v1/upload',
+      // 设置图片上传的请求头
+      headersObj: { Authorization: window.sessionStorage.getItem('token') },
+      previewPath: '',
+      dialogVisible: false,
     }
   },
+
+  computed: {},
 
   created() {},
 
