@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-06-18 22:56:44
  * @LastEditors: SUI
- * @LastEditTime: 2022-06-30 14:06:08
+ * @LastEditTime: 2022-06-30 14:07:24
  * @FilePath: \Mall-system\src\views\goods\Add.vue
 -->
 <template>
@@ -188,6 +188,31 @@ export default {
         that.cateList = res.data
       })
     },
+
+    // 点击选择商品分类
+    handleChange() {
+      if (this.addForm.goods_cat.length !== 3) {
+        this.addForm.goods_cat = []
+      }
+    },
+
+    //点击tab切换时触发,未满足条件不发生跳转
+    beforeTabsLeave(activeName, oldActiveName) {
+      // console.log('即将离开的标签页' + oldActiveName)
+      // console.log('即将进入的标签页' + activeName)
+      // 选择第一个标签页 并且 没有填写商品名称
+      if (oldActiveName === '0' && this.addForm.goods_name === '') {
+        this.$message.error('请填写商品名称')
+        return false
+      }
+      // 选择第一个标签页 并且 没有选择商品分类
+      if (oldActiveName === '0' && this.addForm.goods_cat.length !== 3) {
+        this.$message.error('请先选择商品分类')
+        return false
+      }
+    },
+
+    // 点击左侧 tab
   },
 }
 </script>
