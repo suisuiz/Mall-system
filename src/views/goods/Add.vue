@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-06-18 22:56:44
  * @LastEditors: SUI
- * @LastEditTime: 2022-06-29 14:32:52
+ * @LastEditTime: 2022-06-30 14:06:08
  * @FilePath: \Mall-system\src\views\goods\Add.vue
 -->
 <template>
@@ -160,11 +160,35 @@ export default {
     }
   },
 
-  computed: {},
+  // 计算属性获取id
+  computed: {
+    // 发送获取参数请求时 的分类id
+    cateId() {
+      if (this.addForm.goods_cat.length === 3) {
+        return this.addForm.goods_cat[2]
+      }
+      return null
+    },
+  },
 
-  created() {},
+  created() {
+    // 获取分类
+    this.getCateList()
+  },
 
-  methods: {},
+  methods: {
+    // 获取商品的分类数据
+    getCateList() {
+      let that = this
+      that.$api.get('categories', {}, (res) => {
+        if (res.meta.status !== 200) return that.$message.error(res.meta.msg)
+        that.$message.success('获取分类数据成功')
+        // console.log(res.data)
+        // 分类列表
+        that.cateList = res.data
+      })
+    },
+  },
 }
 </script>
 
