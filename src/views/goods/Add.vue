@@ -213,6 +213,59 @@ export default {
     },
 
     // 点击左侧 tab
+    tabClick() {
+      let that = this
+      // 获取参数列表
+      // 访问动态参数面板
+      if (that.activeIndex === '1') {
+        that.$api.get(`categories/${that.cateId}/attributes`, { sel: 'many' }, (res) => {
+          if (res.meta.status !== 200) return that.$message.error('获取参数数据失败')
+          that.$message.success('获取参数数据成功')
+          // console.log(res.data)
+          res.data.forEach((item) => {
+            // 判断 有 attr_vals 值后 分割 item 项渲染   ===>  split 分割 字符串变数组
+            item.attr_vals === '' ? [] : (item.attr_vals = item.attr_vals.split(' '))
+          })
+          that.manyTableData = res.data
+        })
+      } else if (this.activeIndex === '2') {
+        // 获取静态数据
+        that.$api.get(`categories/${that.cateId}/attributes`, { sel: 'only' }, (res) => {
+          if (res.meta.status !== 200) return that.$message.error('获取静态属性失败')
+          that.$message.success('获取静态属性成功')
+          // console.log(res.data)
+          that.onlyTableDate = res.data
+        })
+      }
+    },
+
+    // 图片预览的函数
+    handlePreview(file) {
+      this.previewPath = file.response.data.url
+      this.dialogVisible = true
+    },
+
+    // 移除图片的函数
+    handleRemove(file) {
+      // 1.获取将要删除图片的临时路径
+      const filePath = file.response.data.tmp_path
+      // 2.从 pics 数组中找到这张图片的索引值
+      // findIndex 函数找到值
+      const index = this.addForm.pics.findIndex((item) => item.pic === filePath)
+      // 3.用数组的 splice 方法删除
+      this.addForm.pics.splice(index, 1)
+      // console.log(file);
+    },
+
+    // 图片上传成功的处理函数
+    handleSuccess(response) {
+      // 1.拼接得到一个图片信息对象
+      const picInfo = { pic: response.data.tmp_path }
+      // 2.将信息添加到表单数组中
+      this.addForm.pics.push(picInfo)
+    },
+
+    // 添加商品
   },
 }
 </script>
