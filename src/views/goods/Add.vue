@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-06-18 22:56:44
  * @LastEditors: SUI
- * @LastEditTime: 2022-07-04 18:35:25
+ * @LastEditTime: 2022-07-04 18:36:35
  * @FilePath: \Mall-system\src\views\goods\Add.vue
 -->
 <template>
@@ -312,4 +312,11 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.el-checkbox {
+  margin: 0 10px 0 0 !important;
+}
+.addbtn {
+  margin-top: 15px;
+}
+</style>
