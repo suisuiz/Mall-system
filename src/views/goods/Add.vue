@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-06-18 22:56:44
  * @LastEditors: SUI
- * @LastEditTime: 2022-06-30 14:07:24
+ * @LastEditTime: 2022-07-04 18:35:25
  * @FilePath: \Mall-system\src\views\goods\Add.vue
 -->
 <template>
@@ -266,6 +266,48 @@ export default {
     },
 
     // 添加商品
+    add(formName) {
+      let that = this
+      // 表单校验
+      that.$refs[formName].validate((valid) => {
+        if (valid) {
+          // 执行商品添加的业务逻辑
+          // 深拷贝
+          const form = _.cloneDeep(that.addForm)
+          // 将 goods_cat 转化成字符串
+          form.goods_cat = form.goods_cat.join(',')
+
+          // 处理动态参数
+          that.manyTableData.forEach((item) => {
+            const newInfo = {
+              attr_id: item.attr_id,
+              attr_value: item.attr_vals.join(' '),
+            }
+            that.addForm.attrs.push(newInfo)
+          })
+
+          // 处理静态属性
+          that.onlyTableDate.forEach((item) => {
+            const newInfo = {
+              attr_id: item.attr_id,
+              attr_value: item.attr_vals,
+            }
+            that.addForm.attrs.push(newInfo)
+          })
+
+          form.attrs = that.addForm.attrs
+          // console.log(form);
+
+          that.$api.post('goods', form, (res) => {
+            if (res.meta.status !== 201) return that.$message.error(res.meta.msg)
+            that.$message.success('添加成功')
+            that.$router.push('/goods')
+          })
+        } else {
+          return that.$message.error('请填写必要的表单项')
+        }
+      })
+    },
   },
 }
 </script>
