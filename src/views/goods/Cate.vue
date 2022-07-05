@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-06-20 09:26:26
  * @LastEditors: SUI
- * @LastEditTime: 2022-07-05 15:35:06
+ * @LastEditTime: 2022-07-05 15:36:15
  * @FilePath: \Mall-system\src\views\goods\Cate.vue
 -->
 <template>
@@ -110,6 +110,7 @@ export default {
     return {
       // 面包屑标题
       breadTitle: { one: '商品管理', two: '商品分类' },
+
       // 请求参数
       queryInfo: {
         // 值：1，2，3 分别表示显示一层二层三层分类列表
@@ -123,6 +124,57 @@ export default {
       cateList: [],
       // 总数
       totalpage: 0,
+      //为table指定列的对象
+      columns: [
+        {
+          label: '分类名称',
+          prop: 'cat_name',
+        },
+        {
+          label: '是否有效',
+          //表示将当前列定义为模版列
+          type: 'template',
+          //表示当前这一列使用的模版名称
+          template: 'isok',
+        },
+        {
+          label: '级别',
+          //表示将当前列定义为模版列
+          type: 'template',
+          //表示当前这一列使用的模版名称
+          template: 'order',
+        },
+        {
+          label: '操作',
+          //表示将当前列定义为模版列
+          type: 'template',
+          //表示当前这一列使用的模版名称
+          template: 'opt',
+        },
+      ],
+
+      // 添加分类
+      addDialog: false,
+      addForm: {
+        //将要添加的分类名称
+        cat_name: '',
+        // 父级分类的id
+        cat_pid: 0,
+        // 分类的等级，默认是一级分类
+        cat_level: 0,
+      },
+
+      // 编辑分类
+      editDialog: false,
+      editForm: { cat_name: '', cat_id: '' },
+
+      // 表单的验证规则对象
+      formRules: { cat_name: [{ required: true, message: '请输入分类名称 ', trigger: 'blur' }] },
+
+      // 父级分类列表
+      parentCateList: [],
+      // 选中的父级id
+      selectedKeys: [],
     }
   },
 
