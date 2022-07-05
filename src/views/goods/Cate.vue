@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-06-20 09:26:26
  * @LastEditors: SUI
- * @LastEditTime: 2022-06-23 14:34:57
+ * @LastEditTime: 2022-07-05 15:34:05
  * @FilePath: \Mall-system\src\views\goods\Cate.vue
 -->
 <template>
@@ -11,7 +11,92 @@
     <!-- 面包屑导航 -->
     <Bread :title="breadTitle"></Bread>
     <!-- 内容展示卡片 -->
-    <el-card class="box-card"> </el-card>
+    <el-card class="box-card">
+      <!-- 搜索和添加 -->
+      <el-row :gutter="20">
+        <!-- 添加分类 -->
+        <el-col :span="4">
+          <el-button type="primary" @click="addGoods">添加分类</el-button>
+        </el-col>
+      </el-row>
+
+      <!-- 
+        表格数据
+        自定义组件 npm安装
+        文档  https://github.com/MisterTaki/vue-table-with-tree-grid#api
+       -->
+      <tree-table class="el-table" :data="cateList" :columns="columns" :selection-type="false" :expand-type="false" show-index index-text="#" border>
+        <!-- 是否有效 -->
+        <template slot="isok" slot-scope="scope">
+          <i style="color: lightgreen" class="el-icon-success" v-if="scope.row.cat_deleted === false"></i>
+          <i style="color: red" class="el-icon-error" v-else></i>
+        </template>
+        <!-- 级别 -->
+        <template slot="order" slot-scope="scope">
+          <el-tag size="small" v-if="scope.row.cat_level === 0">一级</el-tag>
+          <el-tag size="small" type="success" v-else-if="scope.row.cat_level === 1">二级</el-tag>
+          <el-tag size="mini" type="warning" v-else>三级</el-tag>
+        </template>
+        <!-- 操作 -->
+        <template slot="opt" slot-scope="scope">
+          <el-button size="mini" type="primary" icon="el-icon-edit" @click="showEditDialog(scope.row)">编辑</el-button>
+          <el-button size="mini" type="danger" icon="el-icon-delete" @click="removeUserById(scope.row)">删除 </el-button>
+        </template>
+      </tree-table>
+
+      <!-- 分页 -->
+      <el-pagination
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        :current-page.sync="queryInfo.pagenum"
+        :page-sizes="[5, 10, 15, 25]"
+        :page-size="queryInfo.pagesize"
+        layout="total, sizes, prev, pager, next, jumper"
+        :total="totalpage"
+      >
+      </el-pagination>
+
+      <!-- 添加分类 -->
+      <el-dialog title="添加分类" width="35%" :visible.sync="addDialog" @close="addResetForm('addFormRef')">
+        <el-form ref="addFormRef" :model="addForm" :rules="formRules">
+          <!-- prop="cat_name"  校验 -->
+          <el-form-item prop="cat_name" label="分类名称" label-width="80px">
+            <el-input v-model="addForm.cat_name" autocomplete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="父级分类" label-width="80px">
+            <!-- options用来指定数据源 -->
+            <!-- props用来指定配置对象 -->
+            <el-cascader
+              v-model="selectedKeys"
+              :options="parentCateList"
+              :props="{ expandTrigger: 'hover', value: 'cat_id', label: 'cat_name', children: 'children' }"
+              style="width: 100%"
+              clearable
+              change-on-select
+              @change="parentCateChange"
+            ></el-cascader>
+          </el-form-item>
+        </el-form>
+        <div slot="footer" class="dialog-footer">
+          <el-button @click="addResetForm('addFormRef')">取 消</el-button>
+          <el-button type="primary" @click="addSubmitForm('addFormRef')">添 加</el-button>
+        </div>
+      </el-dialog>
+
+      <!-- 编辑分类 -->
+      <el-dialog title="编辑分类" :visible.sync="editDialog" width="35%" @close="editResetForm('editFormRef')">
+        <el-form :model="editForm" :rules="formRules" ref="editFormRef" label-width="80px">
+          <el-form-item label="分类名称" prop="cat_name">
+            <el-input v-model="editForm.cat_name"></el-input>
+          </el-form-item>
+        </el-form>
+
+        <span slot="footer" class="dialog-footer">
+          <el-button @click="editResetForm('editFormRef')">取 消</el-button>
+          <el-button type="primary" @click="editCate('editFormRef')">确 定</el-button>
+        </span>
+      </el-dialog>
+    </el-card>
   </div>
 </template>
 <script>
