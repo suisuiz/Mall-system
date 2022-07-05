@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-06-20 09:26:26
  * @LastEditors: SUI
- * @LastEditTime: 2022-07-05 15:34:05
+ * @LastEditTime: 2022-07-05 15:35:06
  * @FilePath: \Mall-system\src\views\goods\Cate.vue
 -->
 <template>
@@ -109,10 +109,20 @@ export default {
   data() {
     return {
       // 面包屑标题
-      breadTitle: {
-        one: '商品管理',
-        two: '商品分类',
+      breadTitle: { one: '商品管理', two: '商品分类' },
+      // 请求参数
+      queryInfo: {
+        // 值：1，2，3 分别表示显示一层二层三层分类列表
+        type: 3,
+        // 当前页数
+        pagenum: 1,
+        // 每页显示条数
+        pagesize: 5,
       },
+      // 商品分类的数据列表
+      cateList: [],
+      // 总数
+      totalpage: 0,
     }
   },
 
