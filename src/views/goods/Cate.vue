@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-06-20 09:26:26
  * @LastEditors: SUI
- * @LastEditTime: 2022-07-05 15:36:15
+ * @LastEditTime: 2022-07-06 19:20:22
  * @FilePath: \Mall-system\src\views\goods\Cate.vue
 -->
 <template>
@@ -178,9 +178,40 @@ export default {
     }
   },
 
-  created() {},
+  created() {
+    // 获取商品分类
+    this.getCatesList()
+  },
 
-  methods: {},
+  methods: {
+    // 获取商品分类数据
+    getCatesList() {
+      let that = this
+      that.$api.get('categories', that.queryInfo, (res) => {
+        if (res.meta.status !== 200) return that.$message.error(res.meta.msg)
+        that.$message.success('获取分类数据成功')
+        // console.log(res.data)
+        // 当前页数
+        // that.queryInfo.pagenum = res.data.pagenum
+        // 分类总数
+        that.totalpage = res.data.total
+        // 分类列表
+        that.cateList = res.data.result
+      })
+    },
+
+    // 监听分页 改变条数
+    handleSizeChange(pagesize) {
+      this.queryInfo.pagesize = pagesize
+      this.getCatesList()
+    },
+
+    // 监听分页 改变页数
+    handleCurrentChange(pagenum) {
+      this.queryInfo.pagenum = pagenum
+      this.getCatesList()
+    },
+  },
 }
 </script>
 
