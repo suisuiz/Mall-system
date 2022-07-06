@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-06-20 09:26:26
  * @LastEditors: SUI
- * @LastEditTime: 2022-07-06 19:20:22
+ * @LastEditTime: 2022-07-06 19:21:24
  * @FilePath: \Mall-system\src\views\goods\Cate.vue
 -->
 <template>
@@ -210,6 +210,18 @@ export default {
     handleCurrentChange(pagenum) {
       this.queryInfo.pagenum = pagenum
       this.getCatesList()
+    },
+
+    // 添加分类
+    addGoods() {
+      let that = this
+      that.addDialog = true
+      that.$api.get('categories', { type: 2 }, (res) => {
+        if (res.meta.status !== 200) return that.$message.error(res.meta.msg)
+        // that.$message.success('获取分类数据成功')
+        // 父级分类列表
+        that.parentCateList = res.data
+      })
     },
   },
 }
