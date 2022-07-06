@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-06-20 09:26:26
  * @LastEditors: SUI
- * @LastEditTime: 2022-07-06 19:21:24
+ * @LastEditTime: 2022-07-06 19:20:22
  * @FilePath: \Mall-system\src\views\goods\Cate.vue
 -->
 <template>
@@ -222,6 +222,20 @@ export default {
         // 父级分类列表
         that.parentCateList = res.data
       })
+    },
+
+    // 改变父级节点选项
+    parentCateChange() {
+      if (this.selectedKeys.length > 0) {
+        // 父 id
+        this.addForm.cat_pid = this.selectedKeys[this.selectedKeys.length - 1]
+        // 当前等级
+        this.addForm.cat_level = this.selectedKeys.length
+        return
+      } else {
+        this.addForm.cat_pid = 0
+        this.addForm.cat_level = 0
+      }
     },
   },
 }
