@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-06-20 09:26:26
  * @LastEditors: SUI
- * @LastEditTime: 2022-07-06 19:20:22
+ * @LastEditTime: 2022-07-07 18:33:38
  * @FilePath: \Mall-system\src\views\goods\Cate.vue
 -->
 <template>
@@ -236,6 +236,36 @@ export default {
         this.addForm.cat_pid = 0
         this.addForm.cat_level = 0
       }
+    },
+
+    // 添加分类提交
+    addSubmitForm(formName) {
+      let that = this
+      // 表单校验
+      that.$refs[formName].validate((valid) => {
+        if (valid) {
+          console.log(that.addForm)
+          // 调用添加分类接口
+          that.$api.post('categories', that.addForm, (res) => {
+            if (res.meta.status !== 201) return that.$message.error('创建失败')
+            that.$message.success('创建成功')
+            that.getCatesList()
+            that.addDialog = false
+          })
+        }
+      })
+    },
+
+    // 初始化添加分类
+    addResetForm(formName) {
+      this.$refs[formName].resetFields()
+      this.addForm = {
+        cat_name: '',
+        cat_pid: 0,
+        cat_level: 0,
+      }
+      this.selectedKeys = []
+      this.addDialog = false
     },
   },
 }
