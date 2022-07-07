@@ -296,6 +296,37 @@ export default {
         }
       })
     },
+
+    // 初始化编辑
+    editResetForm(formName) {
+      this.$refs[formName].resetFields()
+      this.editForm = {
+        cat_name: '',
+        cat_pid: '',
+      }
+      this.editDialog = false
+    },
+
+    // 删除分类
+    async removeUserById(cate) {
+      let that = this
+      try {
+        await that.$confirm('是否删除分类?', '提示', {
+          confirmButtonText: '删除',
+          cancelButtonText: '取消',
+          type: 'warning',
+        })
+
+        // 根据 ID 删除用户
+        that.$api.delete(`categories/${cate.cat_id}`, {}, (res) => {
+          if (res.meta.status !== 200) return that.$message.error('删除失败')
+          that.$message.success('删除成功')
+          that.getCatesList()
+        })
+      } catch (error) {
+        that.$message.info('取消')
+      }
+    },
   },
 }
 </script>
