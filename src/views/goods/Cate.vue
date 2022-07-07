@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-06-20 09:26:26
  * @LastEditors: SUI
- * @LastEditTime: 2022-07-07 18:33:38
+ * @LastEditTime: 2022-07-07 18:34:55
  * @FilePath: \Mall-system\src\views\goods\Cate.vue
 -->
 <template>
@@ -266,6 +266,35 @@ export default {
       }
       this.selectedKeys = []
       this.addDialog = false
+    },
+
+    // 显示编辑框
+    showEditDialog(cate) {
+      let that = this
+      that.$api.get(`categories/${cate.cat_id}`, {}, (res) => {
+        if (res.meta.status !== 200) return that.$message.error('查询分类名称失败')
+        that.$message.success('查询分类名称成功')
+        // console.log(res.data)
+        that.editForm = res.data
+        that.editDialog = true
+      })
+    },
+
+    // 编辑分类
+    editCate(formName) {
+      let that = this
+      // 表单校验
+      that.$refs[formName].validate((valid) => {
+        if (valid) {
+          // 调用添加分类接口
+          that.$api.put(`categories/${that.editForm.cat_id}`, that.editForm, (res) => {
+            if (res.meta.status !== 200) return that.$message.error('更新失败')
+            that.$message.success('更新成功')
+            that.getCatesList()
+            that.editDialog = false
+          })
+        }
+      })
     },
   },
 }
