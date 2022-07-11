@@ -82,6 +82,18 @@
           <el-button type="primary" @click="addParams('addFormRef')">确 定</el-button>
         </span>
       </el-dialog>
+      <!-- 编辑按钮的对话框 -->
+      <el-dialog :title="`修改${activeName === 'many' ? '动态参数' : '静态属性'}`" :visible.sync="editDialogVisible" width="35%" @close="editDialogClosed">
+        <el-form :model="editForm" :rules="rules" ref="editFormRef" label-width="80px">
+          <el-form-item :label="activeName === 'many' ? '动态参数' : '静态属性'" prop="attr_name">
+            <el-input v-model="editForm.attr_name"></el-input>
+          </el-form-item>
+        </el-form>
+        <span slot="footer" class="dialog-footer">
+          <el-button @click="editDialogVisible = false">取 消</el-button>
+          <el-button type="primary" @click="editParams('editFormRef')">确 定</el-button>
+        </span>
+      </el-dialog>
     </el-card>
   </div>
 </template>
