@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-06-22 16:55:01
  * @LastEditors: SUI
- * @LastEditTime: 2022-07-11 17:39:33
+ * @LastEditTime: 2022-07-11 17:40:48
  * @FilePath: \Mall-system\src\views\goods\Params.vue
 -->
 <template>
@@ -39,6 +39,49 @@
 
       <!-- 添加按钮 -->
       <el-button type="primary" size="mini" :disabled="values.length === 3 ? false : true" @click="dialogVisible = true">添加参数</el-button>
+
+      <!-- 数据展示 -->
+      <el-table :data="tableData" border stripe>
+        <el-table-column type="expand">
+          <template slot-scope="scope">
+            <el-tag closable @close="closeTag(index, scope.row)" v-for="(item, index) in scope.row.attr_vals" :key="index">{{ item }}</el-tag>
+            <!-- 文本输入框 -->
+            <el-input
+              class="input-new-tag"
+              v-if="scope.row.inputVisible"
+              v-model="scope.row.inputValue"
+              ref="saveTagInput"
+              size="small"
+              @keyup.enter.native="handleInputConfirm(scope.row)"
+              @blur="handleInputConfirm(scope.row)"
+            >
+            </el-input>
+            <!-- 添加按钮 -->
+            <el-button v-else class="button-new-tag" size="small" @click="showInput(scope.row)">+ New Tag</el-button>
+          </template>
+        </el-table-column>
+        <el-table-column label="#" type="index"></el-table-column>
+        <el-table-column :label="activeName == '0' ? '参数名称' : '属性名称'" prop="attr_name"></el-table-column>
+        <el-table-column label="操作">
+          <template slot-scope="scope">
+            <el-button size="mini" type="primary" icon="el-icon-edit" @click="showEditDialog(scope.row.attr_id)">编辑</el-button>
+            <el-button size="mini" type="danger" icon="el-icon-delete" @click="removeParams(scope.row.attr_id)">删除</el-button>
+          </template>
+        </el-table-column>
+      </el-table>
+
+      <!-- 添加按钮的对话框 -->
+      <el-dialog :title="`添加${activeName === 'many' ? '动态参数' : '静态属性'}`" :visible.sync="dialogVisible" width="35%" @close="addDialogClosed">
+        <el-form :model="addForm" :rules="rules" ref="addFormRef" label-width="80px">
+          <el-form-item :label="activeName === 'many' ? '动态参数' : '静态属性'" prop="attr_name">
+            <el-input v-model="addForm.attr_name"></el-input>
+          </el-form-item>
+        </el-form>
+        <span slot="footer" class="dialog-footer">
+          <el-button @click="dialogVisible = false">取 消</el-button>
+          <el-button type="primary" @click="addParams('addFormRef')">确 定</el-button>
+        </span>
+      </el-dialog>
     </el-card>
   </div>
 </template>
