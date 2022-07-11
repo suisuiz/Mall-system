@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-06-22 16:55:01
  * @LastEditors: SUI
- * @LastEditTime: 2022-07-11 17:40:48
+ * @LastEditTime: 2022-07-11 17:43:09
  * @FilePath: \Mall-system\src\views\goods\Params.vue
 -->
 <template>
@@ -82,6 +82,7 @@
           <el-button type="primary" @click="addParams('addFormRef')">确 定</el-button>
         </span>
       </el-dialog>
+
       <!-- 编辑按钮的对话框 -->
       <el-dialog :title="`修改${activeName === 'many' ? '动态参数' : '静态属性'}`" :visible.sync="editDialogVisible" width="35%" @close="editDialogClosed">
         <el-form :model="editForm" :rules="rules" ref="editFormRef" label-width="80px">
@@ -102,16 +103,36 @@
 import Bread from '@/components/common/Bread'
 export default {
   name: 'Params',
-  components: {
-    Bread,
-  },
+
+  components: { Bread },
+
   data() {
     return {
       // 面包屑标题
-      breadTitle: {
-        one: '商品管理',
-        two: '商品列表',
-      },
+      breadTitle: { one: '商品管理', two: '参数列表' },
+      // 分类列表
+      cateList: [],
+      // 选中的id
+      values: [],
+
+      // 切换值
+      activeName: 'many',
+
+      // 表格数据
+      tableData: [],
+
+      // 添加弹框
+      dialogVisible: false,
+      // 添加表单的数据对象
+      addForm: { attr_name: '' },
+
+      // 编辑弹框
+      editDialogVisible: false,
+      // 编辑数据
+      editForm: {},
+
+      // 表单的验证规则对象
+      rules: { attr_name: [{ required: true, message: '请输入属性名称', trigger: 'blur' }] },
     }
   },
 
