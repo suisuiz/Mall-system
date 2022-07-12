@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-06-22 16:55:01
  * @LastEditors: SUI
- * @LastEditTime: 2022-07-11 17:43:09
+ * @LastEditTime: 2022-07-12 20:13:51
  * @FilePath: \Mall-system\src\views\goods\Params.vue
 -->
 <template>
@@ -136,7 +136,10 @@ export default {
     }
   },
 
-  created() {},
+  created() {
+    // 获取分类
+    this.getCatesList()
+  },
 
   methods: {},
 }
