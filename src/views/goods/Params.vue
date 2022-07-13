@@ -162,6 +162,30 @@ export default {
         that.cateList = res.data
       })
     },
+
+    // 获取参数数据
+    getParams() {
+      let that = this
+      // 过滤非三级分类
+      if (that.values.length !== 3) {
+        that.values = []
+        that.tableData = []
+        return
+      }
+      that.$api.get(`categories/${that.cateId}/attributes`, { sel: that.activeName }, (res) => {
+        if (res.meta.status !== 200) return that.$message.error(res.meta.msg)
+        that.$message.success('获取参数成功')
+        // 将attr_vals分割 并返回为数组
+        res.data.forEach((item) => {
+          item.attr_vals = item.attr_vals ? item.attr_vals.split(' ') : []
+          // 控制单行的文本输入框的显示与隐藏
+          item.inputVisible = false
+          // 单行文本输入框的数据绑定对象
+          item.inputValue = ''
+        })
+        that.tableData = res.data
+      })
+    },
   },
 }
 </script>
