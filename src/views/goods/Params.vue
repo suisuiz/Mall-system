@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-06-22 16:55:01
  * @LastEditors: SUI
- * @LastEditTime: 2022-07-12 20:13:51
+ * @LastEditTime: 2022-07-13 19:23:03
  * @FilePath: \Mall-system\src\views\goods\Params.vue
 -->
 <template>
@@ -141,7 +141,28 @@ export default {
     this.getCatesList()
   },
 
-  methods: {},
+  computed: {
+    //当前级联选择的三级 id
+    cateId() {
+      if (this.values.length === 3) {
+        return this.values[2]
+      }
+      return null
+    },
+  },
+
+  methods: {
+    // 获取分类
+    getCatesList() {
+      let that = this
+      that.$api.get('categories', {}, (res) => {
+        if (res.meta.status !== 200) return that.$message.error(res.meta.msg)
+        that.$message.success('获取分类成功')
+        // 分类列表
+        that.cateList = res.data
+      })
+    },
+  },
 }
 </script>
 
