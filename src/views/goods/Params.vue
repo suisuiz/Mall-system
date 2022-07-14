@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-06-22 16:55:01
  * @LastEditors: SUI
- * @LastEditTime: 2022-07-14 20:02:44
+ * @LastEditTime: 2022-07-14 20:03:47
  * @FilePath: \Mall-system\src\views\goods\Params.vue
 -->
 <template>
@@ -211,6 +211,21 @@ export default {
       this.$nextTick(() => {
         this.$refs.saveTagInput.$refs.input.focus()
       })
+    },
+
+    // tag回车或者失去焦点触发事件
+    handleInputConfirm(scope) {
+      if (scope.inputValue.trim().length === 0) {
+        scope.inputValue = ''
+        scope.inputVisible = false
+        return
+      }
+      //没有return 说明输入的值有效 可以进行后续操作
+      scope.attr_vals.push(scope.inputValue)
+      scope.inputValue = ''
+      scope.inputVisible = false
+      //前端页面渲染出来新标签不够，还需要将数据提交给服务器
+      this.saveAttrVals(scope)
     },
   },
 }
