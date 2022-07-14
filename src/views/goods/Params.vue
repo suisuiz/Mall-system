@@ -227,6 +227,20 @@ export default {
       //前端页面渲染出来新标签不够，还需要将数据提交给服务器
       this.saveAttrVals(scope)
     },
+
+    // 保存数据
+    saveAttrVals(scope) {
+      let that = this
+      let data = {
+        attr_name: scope.attr_name,
+        attr_sel: scope.attr_sel,
+        attr_vals: scope.attr_vals.join(' '),
+      }
+      that.$api.put(`categories/${that.cateId}/attributes/${scope.attr_id}`, data, (res) => {
+        if (res.meta.status !== 200) return that.$message.error('添加失败')
+        this.$message.success('添加成功')
+      })
+    },
   },
 }
 </script>
