@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-06-22 16:55:01
  * @LastEditors: SUI
- * @LastEditTime: 2022-07-13 19:23:03
+ * @LastEditTime: 2022-07-14 20:02:44
  * @FilePath: \Mall-system\src\views\goods\Params.vue
 -->
 <template>
@@ -185,6 +185,16 @@ export default {
         })
         that.tableData = res.data
       })
+    },
+
+    // 改变父级节点选项
+    handleChange() {
+      this.getParams()
+    },
+
+    // tab 切换
+    handleClick() {
+      this.getParams()
     },
   },
 }
