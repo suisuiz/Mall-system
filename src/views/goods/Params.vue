@@ -196,6 +196,22 @@ export default {
     handleClick() {
       this.getParams()
     },
+
+    // 展开行删 tag
+    closeTag(index, scope) {
+      scope.attr_vals.splice(index, 1)
+      // 保存到数据库中
+      this.saveAttrVals(scope)
+    },
+
+    // 显示输入框
+    showInput(scope) {
+      scope.inputVisible = true
+      // 让文本框自动获得焦点
+      this.$nextTick(() => {
+        this.$refs.saveTagInput.$refs.input.focus()
+      })
+    },
   },
 }
 </script>
