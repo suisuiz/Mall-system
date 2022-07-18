@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-06-22 16:55:01
  * @LastEditors: SUI
- * @LastEditTime: 2022-07-18 15:55:49
+ * @LastEditTime: 2022-07-18 16:00:03
  * @FilePath: \Mall-system\src\views\goods\Params.vue
 -->
 <template>
@@ -303,6 +303,26 @@ export default {
           })
         }
       })
+    },
+
+    // 删除
+    async removeParams(id) {
+      let that = this
+      try {
+        await that.$confirm('是否删除该参数?', '提示', {
+          confirmButtonText: '删除',
+          cancelButtonText: '取消',
+          type: 'warning',
+        })
+        // 根据 ID 删除
+        that.$api.delete(`categories/${that.cateId}/attributes/${id}`, {}, (res) => {
+          if (res.meta.status !== 200) return that.$message.error('删除失败')
+          that.$message.success('删除成功')
+          that.getParams()
+        })
+      } catch (error) {
+        that.$message.info('取消')
+      }
     },
   },
 }
