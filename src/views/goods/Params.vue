@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-06-22 16:55:01
  * @LastEditors: SUI
- * @LastEditTime: 2022-07-14 20:03:47
+ * @LastEditTime: 2022-07-18 15:54:42
  * @FilePath: \Mall-system\src\views\goods\Params.vue
 -->
 <template>
@@ -243,6 +243,30 @@ export default {
     },
 
     // 监听对话框的关闭事件
+    addDialogClosed() {
+      this.$refs.addFormRef.resetFields()
+    },
+
+    // 点击确定添加属性
+    addParams(formName) {
+      let that = this
+      // 表单预校验
+      that.$refs[formName].validate((valid) => {
+        if (valid) {
+          let data = {
+            attr_name: that.addForm.attr_name,
+            attr_sel: that.activeName,
+          }
+          // 调用添加分类接口
+          that.$api.post(`categories/${that.cateId}/attributes`, data, (res) => {
+            if (res.meta.status !== 201) return that.$message.error('添加属性失败')
+            that.$message.success('添加属性成功')
+            that.getParams()
+            that.dialogVisible = false
+          })
+        }
+      })
+    },
   },
 }
 </script>
