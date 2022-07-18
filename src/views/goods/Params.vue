@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-06-22 16:55:01
  * @LastEditors: SUI
- * @LastEditTime: 2022-07-18 16:00:03
+ * @LastEditTime: 2022-07-18 16:01:08
  * @FilePath: \Mall-system\src\views\goods\Params.vue
 -->
 <template>
@@ -328,4 +328,19 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.el-row {
+  margin: 15px 0;
+}
+
+.el-table {
+  margin-top: 15px;
+}
+
+.el-tag {
+  margin: 10px;
+}
+.input-new-tag {
+  width: 100px;
+}
+</style>
