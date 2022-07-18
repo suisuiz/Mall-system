@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-06-22 16:55:01
  * @LastEditors: SUI
- * @LastEditTime: 2022-07-18 15:54:42
+ * @LastEditTime: 2022-07-18 15:55:49
  * @FilePath: \Mall-system\src\views\goods\Params.vue
 -->
 <template>
@@ -263,6 +263,43 @@ export default {
             that.$message.success('添加属性成功')
             that.getParams()
             that.dialogVisible = false
+          })
+        }
+      })
+    },
+
+    // 监听修改对话框的关闭事件
+    editDialogClosed() {
+      this.$refs.editFormRef.resetFields()
+    },
+
+    // 编辑
+    showEditDialog(attr_id) {
+      let that = this
+      let data = { attr_sel: that.activeName }
+      that.$api.get(`categories/${that.cateId}/attributes/${attr_id}`, data, (res) => {
+        if (res.meta.status !== 200) return that.$message.error('获取当前参数失败')
+        that.editForm = res.data
+        that.editDialogVisible = true
+      })
+    },
+
+    //修改事件
+    editParams(formName) {
+      let that = this
+      // 表单预校验
+      that.$refs[formName].validate((valid) => {
+        if (valid) {
+          let data = {
+            attr_name: that.editForm.attr_name,
+            attr_sel: that.editForm.attr_sel,
+          }
+          // 调用添加分类接口
+          that.$api.put(`categories/${that.cateId}/attributes/${that.editForm.attr_id}`, data, (res) => {
+            if (res.meta.status !== 200) return that.$message.error('修改数据失败')
+            that.$message.success('修改数据成功')
+            that.getParams()
+            that.editDialogVisible = false
           })
         }
       })
