@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-05-12 09:23:13
  * @LastEditors: SUI
- * @LastEditTime: 2022-06-27 10:15:40
+ * @LastEditTime: 2022-07-19 14:39:33
  * @FilePath: \Mall-system\src\router\index.js
  */
 import Vue from 'vue'
@@ -11,63 +11,69 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
-const routes = [{
+const routes = [
+  {
     path: '/',
     // 重定向
-    redirect: '/login'
+    redirect: '/login',
   },
   {
     path: '/login',
     // 路由懒加载
     component: () => import('@/components/home/Login'),
     meta: {
-      name: '登录'
-    }
+      name: '登录',
+    },
   },
   {
     path: '/home',
     component: () => import('@/views/Home'),
     // 重定向
     redirect: '/welcome',
-    children: [{
+    children: [
+      {
         path: '/welcome',
-        component: () => import('@/components/home/Welcome')
+        component: () => import('@/components/home/Welcome'),
       },
       {
         path: '/users',
-        component: () => import('@/views/user/Users')
+        component: () => import('@/views/user/Users'),
       },
       {
         path: '/roles',
-        component: () => import('@/views/power/Roles')
+        component: () => import('@/views/power/Roles'),
       },
       {
         path: '/rights',
-        component: () => import('@/views/power/Rights')
+        component: () => import('@/views/power/Rights'),
       },
       {
         path: '/goods',
-        component: () => import('@/views/goods/Goods')
+        component: () => import('@/views/goods/Goods'),
       },
       {
         path: '/goods/add',
-        component: () => import('@/views/goods/Add')
+        component: () => import('@/views/goods/Add'),
       },
       {
         path: '/params',
-        component: () => import('@/views/goods/Params')
+        component: () => import('@/views/goods/Params'),
       },
       {
         path: '/categories',
-        component: () => import('@/views/goods/Cate')
+        component: () => import('@/views/goods/Cate'),
       },
-      // 
-    ]
+      {
+        path: '/orders',
+        component: () => import('@/views/order/Orders'),
+      },
+      // reports
+    ],
   },
 ]
 
 const router = new VueRouter({
-  routes
+  routes,
 })
 
 // 路由导航守卫
