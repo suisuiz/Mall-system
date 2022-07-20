@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-07-19 14:40:59
  * @LastEditors: SUI
- * @LastEditTime: 2022-07-20 09:19:09
+ * @LastEditTime: 2022-07-20 09:20:18
  * @FilePath: \Mall-system\src\views\order\Orders.vue
 -->
 <template>
@@ -32,10 +32,7 @@ export default {
   // 监听指定值，只有指定值变化，才会触发
   watch: {},
   // 里面的函数只有调用才会执行（实时计算）里面是定义的方法
-  methods: {
-    addFun() {},
-    submitFun() {},
-  },
+  methods: {},
   // 创建前状态(里面是操作)
   beforeCreate() {},
   // 创建完毕状态(里面是操作)
