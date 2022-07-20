@@ -49,7 +49,6 @@ export default {
   // 销毁完成状态(里面是操作)
   destroyed() {},
 
-  // 里面的函数只有调用才会执行（实时计算）里面是定义的方法
   methods: {},
 }
 </script>
