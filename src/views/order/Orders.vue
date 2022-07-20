@@ -23,13 +23,9 @@ export default {
   name: 'Orders',
   components: { Bread },
   data() {
-    //数据
     return {
       // 面包屑标题
-      breadTitle: {
-        one: '订单管理',
-        two: '订单列表',
-      },
+      breadTitle: { one: '订单管理', two: '订单列表' },
     }
   },
 
