@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-07-19 14:40:59
  * @LastEditors: SUI
- * @LastEditTime: 2022-07-20 09:16:35
+ * @LastEditTime: 2022-07-20 09:17:42
  * @FilePath: \Mall-system\src\views\order\Orders.vue
 -->
 <template>
@@ -17,20 +17,17 @@
 </template>
 
 <script>
-// 导入组件
-import headerComponent from './head.vue'
+// 引入面包屑
+import Bread from '@/components/common/Bread'
 // 导出模块
 export default {
   // 模块名字
-  name: 'template',
+  name: 'Orders',
+  components: { Bread },
   // 模块数据
   data() {
     //数据
     return {}
-  },
-  // 注册组件
-  components: {
-    headerComponent,
   },
   // 监听指定值，只有指定值变化，才会触发
   watch: {},
