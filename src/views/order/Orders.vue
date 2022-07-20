@@ -27,7 +27,13 @@ export default {
   // 模块数据
   data() {
     //数据
-    return {}
+    return {
+      // 面包屑标题
+      breadTitle: {
+        one: '订单管理',
+        two: '订单列表',
+      },
+    }
   },
   // 监听指定值，只有指定值变化，才会触发
   watch: {},
