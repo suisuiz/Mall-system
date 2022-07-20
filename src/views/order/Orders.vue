@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-07-19 14:40:59
  * @LastEditors: SUI
- * @LastEditTime: 2022-07-20 09:17:42
+ * @LastEditTime: 2022-07-20 09:19:09
  * @FilePath: \Mall-system\src\views\order\Orders.vue
 -->
 <template>
@@ -19,12 +19,9 @@
 <script>
 // 引入面包屑
 import Bread from '@/components/common/Bread'
-// 导出模块
 export default {
-  // 模块名字
   name: 'Orders',
   components: { Bread },
-  // 模块数据
   data() {
     //数据
     return {
@@ -35,6 +32,7 @@ export default {
       },
     }
   },
+
   // 监听指定值，只有指定值变化，才会触发
   watch: {},
   // 里面的函数只有调用才会执行（实时计算）里面是定义的方法
