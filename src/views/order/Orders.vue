@@ -3,11 +3,17 @@
  * @Author: SUI
  * @Date: 2022-07-19 14:40:59
  * @LastEditors: SUI
- * @LastEditTime: 2022-07-19 14:40:59
+ * @LastEditTime: 2022-07-20 09:16:35
  * @FilePath: \Mall-system\src\views\order\Orders.vue
 -->
 <template>
-  <div></div>
+  <div>
+    <!-- 面包屑导航 -->
+    <Bread :title="breadTitle"></Bread>
+
+    <!-- 内容展示卡片 -->
+    <el-card class="box-card"> </el-card>
+  </div>
 </template>
 
 <script>
