@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-07-19 14:40:59
  * @LastEditors: SUI
- * @LastEditTime: 2022-07-23 17:06:40
+ * @LastEditTime: 2022-07-23 17:11:22
  * @FilePath: \Mall-system\src\views\order\Orders.vue
 -->
 <template>
@@ -29,32 +29,10 @@ export default {
     }
   },
 
-  // 监听指定值，只有指定值变化，才会触发
-  watch: {},
-
-  // 创建前状态(里面是操作)
-  beforeCreate() {},
-  // 创建完毕状态(里面是操作)
   created() {},
-  // 挂载前状态(里面是操作)
-  beforeMount() {},
-  // 挂载结束状态(里面是操作)
-  mounted() {},
-  // 更新前状态(里面是操作)
-  beforeUpdate() {},
-  // 更新完成状态(里面是操作)
-  updated() {},
-  // 销毁前状态(里面是操作)
-  beforeDestroy() {},
-  // 销毁完成状态(里面是操作)
-  destroyed() {},
 
   methods: {},
 }
 </script>
-<style scoped>
-/**
- * 导入css样式组件
- * @import "../assets/css/components/index.css";
- */
-</style>
+
+<style lang="scss" scoped></style>
