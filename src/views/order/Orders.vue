@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-07-19 14:40:59
  * @LastEditors: SUI
- * @LastEditTime: 2022-07-23 17:11:22
+ * @LastEditTime: 2022-07-24 23:33:44
  * @FilePath: \Mall-system\src\views\order\Orders.vue
 -->
 <template>
@@ -29,9 +29,13 @@ export default {
     }
   },
 
-  created() {},
+  created() {
+    //
+  },
 
-  methods: {},
+  methods: {
+    //
+  },
 }
 </script>
 
