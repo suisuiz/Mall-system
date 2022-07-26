@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-07-19 14:40:59
  * @LastEditors: SUI
- * @LastEditTime: 2022-07-25 15:07:26
+ * @LastEditTime: 2022-07-26 20:01:49
  * @FilePath: \Mall-system\src\views\order\Orders.vue
 -->
 <template>
@@ -22,6 +22,7 @@ import Bread from '@/components/common/Bread'
 export default {
   name: 'Orders',
   components: { Bread },
+
   data() {
     return {
       // 面包屑标题
