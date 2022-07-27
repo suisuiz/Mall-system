@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-07-19 14:40:59
  * @LastEditors: SUI
- * @LastEditTime: 2022-07-27 14:12:19
+ * @LastEditTime: 2022-07-27 14:13:51
  * @FilePath: \Mall-system\src\views\order\Orders.vue
 -->
 <template>
@@ -24,6 +24,12 @@
 
       <!-- 内容 -->
       <!-- 订单列表数据 -->
+
+      <!-- 分页选择器 -->
+
+      <!-- 修改地址 -->
+
+      <!-- 查看物流信息 -->
     </el-card>
   </div>
 </template>
