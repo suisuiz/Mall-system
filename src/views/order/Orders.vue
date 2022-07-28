@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-07-19 14:40:59
  * @LastEditors: SUI
- * @LastEditTime: 2022-07-28 09:21:47
+ * @LastEditTime: 2022-07-28 09:23:02
  * @FilePath: \Mall-system\src\views\order\Orders.vue
 -->
 <template>
@@ -61,6 +61,21 @@
       </el-pagination>
 
       <!-- 修改地址 -->
+      <el-dialog title="修改地址" width="50%" :visible.sync="editDialog" @close="editDialog = false">
+        <el-form ref="editOrder" :model="editForm" :rules="formRules">
+          <!-- prop="username"  校验 -->
+          <el-form-item label="省/市/区县" prop="address1" label-width="100px">
+            <el-cascader :options="cityData" v-model="editForm.address1"></el-cascader>
+          </el-form-item>
+          <el-form-item prop="address2" label="详细地址" label-width="100px">
+            <el-input v-model="editForm.address2" autocomplete="off"></el-input>
+          </el-form-item>
+        </el-form>
+        <div slot="footer" class="dialog-footer">
+          <el-button @click="editDialog = false">取 消</el-button>
+          <el-button type="primary" @click="editSubmitForm('editOrder')">添 加</el-button>
+        </div>
+      </el-dialog>
 
       <!-- 查看物流信息 -->
     </el-card>
