@@ -123,6 +123,10 @@ export default {
       // 地址数据
       cityData,
       // 校验规则
+      formRules: {
+        address1: [{ required: true, message: '请输入地址 ', trigger: 'change' }],
+        address2: [{ required: true, message: '请输入详细地址 ', trigger: 'blur' }],
+      },
     }
   },
 
