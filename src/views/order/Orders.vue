@@ -134,11 +134,26 @@ export default {
   },
 
   created() {
-    //
+    // 获取订单列表
+    this.getOrderList()
   },
 
   methods: {
-    //
+    // 获取订单列表
+    getOrderList() {
+      let that = this
+      that.$api.get('orders', that.queryInfo, (res) => {
+        if (res.meta.status !== 200) return that.$message.error('获取数据失败')
+        that.$message.success('获取商订单数据成功')
+        // console.log(res.data)
+        // 商品总数
+        that.total = res.data.total
+        // 分页
+        that.queryInfo.pagenum = res.data.pagenum / 1
+        // 商品列表
+        that.orderList = res.data.goods
+      })
+    },
   },
 }
 </script>
