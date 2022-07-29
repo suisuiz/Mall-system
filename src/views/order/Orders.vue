@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-07-19 14:40:59
  * @LastEditors: SUI
- * @LastEditTime: 2022-07-28 09:23:02
+ * @LastEditTime: 2022-07-29 09:11:52
  * @FilePath: \Mall-system\src\views\order\Orders.vue
 -->
 <template>
@@ -78,6 +78,9 @@
       </el-dialog>
 
       <!-- 查看物流信息 -->
+      <el-dialog title="查看物流信息" width="50%" :visible.sync="progressDialog" @close="progressDialog = false">
+        <!-- 展示物流信息--时间线 timeline -->
+      </el-dialog>
     </el-card>
   </div>
 </template>
@@ -85,6 +88,9 @@
 <script>
 // 引入面包屑
 import Bread from '@/components/common/Bread'
+// 引入地址
+import cityData from './citydata'
+
 export default {
   name: 'Orders',
   components: { Bread },
