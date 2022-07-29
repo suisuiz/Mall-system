@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-07-19 14:40:59
  * @LastEditors: SUI
- * @LastEditTime: 2022-07-29 09:15:25
+ * @LastEditTime: 2022-07-29 09:16:34
  * @FilePath: \Mall-system\src\views\order\Orders.vue
 -->
 <template>
@@ -119,6 +119,10 @@ export default {
         address1: '',
         address2: '',
       },
+
+      // 地址数据
+      cityData,
+      // 校验规则
     }
   },
 
