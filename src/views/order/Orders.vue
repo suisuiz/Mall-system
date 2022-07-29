@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-07-19 14:40:59
  * @LastEditors: SUI
- * @LastEditTime: 2022-07-29 09:16:34
+ * @LastEditTime: 2022-07-29 09:17:41
  * @FilePath: \Mall-system\src\views\order\Orders.vue
 -->
 <template>
@@ -127,6 +127,9 @@ export default {
         address1: [{ required: true, message: '请输入地址 ', trigger: 'change' }],
         address2: [{ required: true, message: '请输入详细地址 ', trigger: 'blur' }],
       },
+
+      // 物流信息弹框
+      progressDialog: false,
     }
   },
 
