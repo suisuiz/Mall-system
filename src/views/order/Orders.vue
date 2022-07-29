@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-07-19 14:40:59
  * @LastEditors: SUI
- * @LastEditTime: 2022-07-29 09:11:52
+ * @LastEditTime: 2022-07-29 09:15:25
  * @FilePath: \Mall-system\src\views\order\Orders.vue
 -->
 <template>
@@ -99,6 +99,26 @@ export default {
     return {
       // 面包屑标题
       breadTitle: { one: '订单管理', two: '订单列表' },
+
+      // 总条数
+      total: 0,
+
+      // 查询数据
+      queryInfo: {
+        query: '',
+        pagesize: 5,
+        pagenum: 1,
+      },
+
+      // 数据展示
+      orderList: [],
+
+      // 编辑
+      editDialog: false,
+      editForm: {
+        address1: '',
+        address2: '',
+      },
     }
   },
 
