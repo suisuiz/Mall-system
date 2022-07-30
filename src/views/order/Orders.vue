@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-07-19 14:40:59
  * @LastEditors: SUI
- * @LastEditTime: 2022-07-29 09:17:41
+ * @LastEditTime: 2022-07-30 22:31:12
  * @FilePath: \Mall-system\src\views\order\Orders.vue
 -->
 <template>
@@ -154,6 +154,9 @@ export default {
         that.orderList = res.data.goods
       })
     },
+    //
+    //
+    //
   },
 }
 </script>
