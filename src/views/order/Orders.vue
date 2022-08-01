@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-07-19 14:40:59
  * @LastEditors: SUI
- * @LastEditTime: 2022-07-31 16:23:17
+ * @LastEditTime: 2022-08-01 09:17:15
  * @FilePath: \Mall-system\src\views\order\Orders.vue
 -->
 <template>
@@ -155,7 +155,15 @@ export default {
       })
     },
 
-    //
+    // 分页
+    handleSizeChange(newSize) {
+      this.queryInfo.pagesize = newSize
+      this.getOrderList()
+    },
+    handleCurrentChange(newPage) {
+      this.queryInfo.pagenum = newPage
+      this.getOrderList()
+    },
   },
 }
 </script>
