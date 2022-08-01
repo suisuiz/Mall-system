@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-07-19 14:40:59
  * @LastEditors: SUI
- * @LastEditTime: 2022-08-01 09:17:15
+ * @LastEditTime: 2022-08-01 09:18:41
  * @FilePath: \Mall-system\src\views\order\Orders.vue
 -->
 <template>
@@ -163,6 +163,34 @@ export default {
     handleCurrentChange(newPage) {
       this.queryInfo.pagenum = newPage
       this.getOrderList()
+    },
+
+    // 编辑
+    showDialog() {
+      // 初始化
+      this.editForm = {
+        address1: '',
+        address2: '',
+      }
+      this.editDialog = true
+    },
+
+    // 编辑订单
+    editSubmitForm(formName) {
+      let that = this
+      // 表单校验
+      that.$refs[formName].validate((valid) => {
+        if (valid) {
+          // 编辑订单接口
+          // that.$api.put(`users/${that.editForm.id}`, that.editForm, (res) => {
+          //   if (res.meta.status !== 200) return that.$message.error('修改用户失败')
+          //   that.$message.success('修改用户成功')
+          //   that.editDialog = false
+          //   that.getUserLIst()
+          // })
+          that.editDialog = false
+        }
+      })
     },
   },
 }
