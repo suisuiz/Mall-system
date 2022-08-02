@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-07-19 14:40:59
  * @LastEditors: SUI
- * @LastEditTime: 2022-08-02 17:42:33
+ * @LastEditTime: 2022-08-02 17:47:03
  * @FilePath: \Mall-system\src\views\order\Orders.vue
 -->
 <template>
@@ -209,4 +209,12 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.el-table {
+  margin-top: 15px;
+}
+
+.el-cascader {
+  width: 100%;
+}
+</style>
