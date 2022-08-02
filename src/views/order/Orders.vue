@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-07-19 14:40:59
  * @LastEditors: SUI
- * @LastEditTime: 2022-08-01 09:18:41
+ * @LastEditTime: 2022-08-02 17:42:33
  * @FilePath: \Mall-system\src\views\order\Orders.vue
 -->
 <template>
@@ -190,6 +190,19 @@ export default {
           // })
           that.editDialog = false
         }
+      })
+    },
+
+    // 地址
+    showProgressBox(row) {
+      let that = this
+      console.log(row)
+      // 获取物流信息
+      // that.$api.get(`/kuaidi/${row.order_number}`, {}, (res) => {
+      that.$api.get('/kuaidi/1106975712662', {}, (res) => {
+        if (res.status !== 200) return that.$message.error('获取物流信息失败')
+        console.log(res.data)
+        that.progressDialog = true
       })
     },
   },
