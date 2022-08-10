@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-08-08 18:50:58
  * @LastEditors: SUI
- * @LastEditTime: 2022-08-10 09:33:13
+ * @LastEditTime: 2022-08-10 09:34:22
  * @FilePath: \Mall-system\src\views\report\Reports.vue
 -->
 <template>
@@ -22,10 +22,18 @@ export default {
   components: { Bread },
 
   data() {
-    return {}
+    return {
+      // 面包屑标题
+      breadTitle: {
+        one: '数据统计',
+        two: '数据报表',
+      },
+    }
   },
 
   created() {},
+
+  mounted() {},
 
   methods: {},
 }
