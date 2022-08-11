@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-08-08 18:50:58
  * @LastEditors: SUI
- * @LastEditTime: 2022-08-11 08:46:21
+ * @LastEditTime: 2022-08-11 08:47:48
  * @FilePath: \Mall-system\src\views\report\Reports.vue
 -->
 <template>
@@ -23,6 +23,14 @@
 <script>
 // 引入面包屑
 import Bread from '@/components/common/Bread'
+
+// 按需导入 echarts
+// import echarts from 'echarts'
+import * as echarts from 'echarts'
+
+// 引入 lodash
+import _ from 'lodash'
+
 export default {
   name: 'Reports',
 
