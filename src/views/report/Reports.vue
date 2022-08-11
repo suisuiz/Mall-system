@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-08-08 18:50:58
  * @LastEditors: SUI
- * @LastEditTime: 2022-08-11 08:47:48
+ * @LastEditTime: 2022-08-11 08:49:08
  * @FilePath: \Mall-system\src\views\report\Reports.vue
 -->
 <template>
@@ -79,7 +79,25 @@ export default {
 
   created() {},
 
-  mounted() {},
+  // 此时页面上元素渲染完毕
+  mounted() {
+    let that = this
+    // 初始化 echarts
+    // 基于准备好的dom，初始化echarts实例
+    let myChart = echarts.init(document.getElementById('echartsBox'))
+
+    // 接口获取 echarts 数据
+    that.$api.get('reports/type/1', {}, (res) => {
+      if (res.meta.status !== 200) return that.$message.error('获取图表失败')
+      console.log(res.data)
+
+      // 合并对象
+      const result = _.merge(res.data, this.options)
+
+      // 渲染页面
+      myChart.setOption(result)
+    })
+  },
 
   methods: {},
 }
