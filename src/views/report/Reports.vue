@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-08-08 18:50:58
  * @LastEditors: SUI
- * @LastEditTime: 2022-08-11 08:49:08
+ * @LastEditTime: 2022-08-12 08:32:37
  * @FilePath: \Mall-system\src\views\report\Reports.vue
 -->
 <template>
@@ -15,6 +15,7 @@
     <el-card class="box-card">
       <!-- 渲染 echarts 图表 -->
       <!-- 为 echarts 准备一个具备大小（宽、高）的 DOM -->
+
       <div id="echartsBox" style="width: 800px; height: 400px"></div>
     </el-card>
   </div>
