@@ -74,10 +74,25 @@
 
 // 全局设置卡片样式
 .el-card {
-  box-shadow: 0 1px 1px rgba(0, 0, 0, .15) !important;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15) !important;
 }
 
 // 分页设置样式
 .el-pagination {
   margin-top: 15px;
+}
+
+.el-cascader-menu {
+  height: 300px;
+  width: 100%;
+}
+
+// 步骤条
+.el-steps {
+  margin: 15px 0;
+}
+
+// 富文本样式
+.ql-container {
+  min-height: 300px !important;
 }
