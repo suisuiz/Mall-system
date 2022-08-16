@@ -1,9 +1,9 @@
 <!--
  * @Descripttion: 
  * @Author: SUI
- * @Date: 2022-05-12 09:58:17
+ * @Date: 2022-05-12 10:23:54
  * @LastEditors: SUI
- * @LastEditTime: 2022-05-12 09:58:20
+ * @LastEditTime: 2022-08-16 17:50:32
  * @FilePath: \Mall-system\src\components\template.vue
 -->
 <template>
@@ -23,15 +23,13 @@ export default {
     return {}
   },
   // 注册组件
-  components: {
-    headerComponent
-  },
+  components: { headerComponent },
   // 监听指定值，只有指定值变化，才会触发
   watch: {},
   // 里面的函数只有调用才会执行（实时计算）里面是定义的方法
   methods: {
     addFun() {},
-    submitFun() {}
+    submitFun() {},
   },
   // 创建前状态(里面是操作)
   beforeCreate() {},
@@ -48,7 +46,7 @@ export default {
   // 销毁前状态(里面是操作)
   beforeDestroy() {},
   // 销毁完成状态(里面是操作)
-  destroyed() {}
+  destroyed() {},
 }
 </script>
 // scoped 样式只在本组件使用
