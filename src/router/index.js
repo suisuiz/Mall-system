@@ -3,11 +3,29 @@
  * @Author: SUI
  * @Date: 2022-05-12 09:23:13
  * @LastEditors: SUI
- * @LastEditTime: 2022-07-19 14:39:33
+ * @LastEditTime: 2022-08-17 18:07:53
  * @FilePath: \Mall-system\src\router\index.js
  */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+
+// 实现路由懒加载
+const Login = () => import(/* webpackChunkName: "Login_Welcome_Users" */ '@/components/home/Login')
+const Home = () => import(/* webpackChunkName: "Login_Welcome_Users" */ '@/views/Home')
+const Welcome = () => import(/* webpackChunkName: "Login_Welcome_Users" */ '@/components/home/Welcome')
+
+const Users = () => import(/* webpackChunkName: "Users_Rights_Roles" */ '@/views/user/Users')
+const Roles = () => import(/* webpackChunkName: "Users_Rights_Roles" */ '@/views/power/Roles')
+const Rights = () => import(/* webpackChunkName: "Users_Rights_Roles" */ '@/views/power/Rights')
+
+const Goods = () => import(/* webpackChunkName: "Add_Goods" */ '@/views/goods/Goods')
+const Add = () => import(/* webpackChunkName: "Add_Goods" */ '@/views/goods/Add')
+
+const Params = () => import(/* webpackChunkName: "Cate_Params" */ '@/views/goods/Params')
+const Cate = () => import(/* webpackChunkName: "Cate_Params" */ '@/views/goods/Cate')
+
+const Orders = () => import(/* webpackChunkName: "Order_Report" */ '@/views/order/Orders')
+const Reports = () => import(/* webpackChunkName: "Order_Report" */ '@/views/report/Reports')
 
 Vue.use(VueRouter)
 
@@ -20,7 +38,8 @@ const routes = [
   {
     path: '/login',
     // 路由懒加载
-    component: () => import('@/components/home/Login'),
+    // component: () => import('@/components/home/Login'),
+    component: Login,
     meta: {
       name: '登录',
     },
@@ -67,7 +86,10 @@ const routes = [
         path: '/orders',
         component: () => import('@/views/order/Orders'),
       },
-      // reports
+      {
+        path: '/reports',
+        component: () => import('@/views/report/Reports'),
+      },
     ],
   },
 ]
