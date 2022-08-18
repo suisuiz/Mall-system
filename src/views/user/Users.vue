@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-05-13 18:31:38
  * @LastEditors: SUI
- * @LastEditTime: 2022-05-26 20:11:43
+ * @LastEditTime: 2022-08-18 18:45:38
  * @FilePath: \Mall-system\src\views\user\Users.vue
 -->
 <template>
@@ -168,10 +168,7 @@ export default {
     }
     return {
       // 面包屑标题
-      breadTitle: {
-        one: '用户管理',
-        two: '用户列表'
-      },
+      breadTitle: { one: '用户管理', two: '用户列表' },
 
       // 获取请求参数
       queryInfo: {
@@ -180,7 +177,7 @@ export default {
         // 当前页数
         pagenum: 1,
         // 每页显示条数
-        pagesize: 5
+        pagesize: 5,
       },
 
       // 用户数据
@@ -195,7 +192,7 @@ export default {
         username: '',
         password: '',
         email: '',
-        mobile: ''
+        mobile: '',
       },
 
       // 修改用户表单
@@ -204,27 +201,27 @@ export default {
         id: '',
         username: '',
         email: '',
-        mobile: ''
+        mobile: '',
       },
 
       // 表单校验
       formRules: {
         username: [
           { required: true, message: '请输入用户名', trigger: 'blur' },
-          { min: 3, max: 10, message: '长度在 3 到 10 个字符', trigger: 'blur' }
+          { min: 3, max: 10, message: '长度在 3 到 10 个字符', trigger: 'blur' },
         ],
         password: [
           { required: true, message: '请输入密码', trigger: 'blur' },
-          { min: 3, max: 15, message: '长度在 3 到 15 个字符', trigger: 'blur' }
+          { min: 3, max: 15, message: '长度在 3 到 15 个字符', trigger: 'blur' },
         ],
         email: [
           // { required: true, message: '请输入邮箱', trigger: 'blur' },
-          { validator: checkEmail, trigger: 'blur' }
+          { validator: checkEmail, trigger: 'blur' },
         ],
         mobile: [
           // { required: true, message: '请输入手机号', trigger: 'blur' },
-          { validator: checkMobile, trigger: 'blur' }
-        ]
+          { validator: checkMobile, trigger: 'blur' },
+        ],
       },
 
       // 分配角色显示
@@ -233,7 +230,7 @@ export default {
       // 角色列表
       rolesList: [],
       // 选择的角色 ID
-      selectedRoleId: ''
+      selectedRoleId: '',
     }
   },
 
@@ -250,9 +247,12 @@ export default {
         if (res.meta.status !== 200) return that.$message.error(res.meta.msg)
         that.$message.success('获取用户数据成功')
         // console.log(res.data)
-        that.usersList = res.data.users
-        that.totalpage = res.data.total
+        // 当前页数
         that.queryInfo.pagenum = res.data.pagenum
+        // 用户总数
+        that.totalpage = res.data.total
+        // 用户列表
+        that.usersList = res.data.users
       })
     },
 
@@ -293,7 +293,7 @@ export default {
         username: '',
         password: '',
         email: '',
-        mobile: ''
+        mobile: '',
       }
       this.addDialog = false
     },
@@ -344,7 +344,7 @@ export default {
         await that.$confirm('是否删除用户?', '提示', {
           confirmButtonText: '删除',
           cancelButtonText: '取消',
-          type: 'warning'
+          type: 'warning',
         })
 
         // 根据 ID 删除用户
@@ -380,7 +380,7 @@ export default {
       }
       // 调用 保存角色 接口
       let data = {
-        rid: selectedRoleId
+        rid: selectedRoleId,
       }
       that.$api.put(`users/${that.userInfo.id}/role`, data, (res) => {
         if (res.meta.status !== 200) return that.$message.error('设置角色失败')
@@ -396,8 +396,8 @@ export default {
       this.setRoleRightDialog = false
       this.selectedRoleId = ''
       this.userInfo = {}
-    }
-  }
+    },
+  },
 }
 </script>
 
