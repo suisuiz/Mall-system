@@ -3,13 +3,14 @@
  * @Author: SUI
  * @Date: 2022-06-20 09:26:26
  * @LastEditors: SUI
- * @LastEditTime: 2022-07-07 18:34:55
+ * @LastEditTime: 2022-08-18 18:35:21
  * @FilePath: \Mall-system\src\views\goods\Cate.vue
 -->
 <template>
   <div>
     <!-- 面包屑导航 -->
     <Bread :title="breadTitle"></Bread>
+
     <!-- 内容展示卡片 -->
     <el-card class="box-card">
       <!-- 搜索和添加 -->

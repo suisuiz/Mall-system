@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-06-18 22:56:44
  * @LastEditors: SUI
- * @LastEditTime: 2022-07-04 18:36:35
+ * @LastEditTime: 2022-08-18 18:34:27
  * @FilePath: \Mall-system\src\views\goods\Add.vue
 -->
 <template>
@@ -82,7 +82,7 @@
             <quill-editor v-model="addForm.goods_introduce"></quill-editor>
 
             <!-- 添加按钮 -->
-            <el-button type="primary" class="addbtn" @click="add('addFormRef')"> 添加商品 </el-button>
+            <el-button type="primary" class="addbtn" @click="add('addFormRef')">添加商品</el-button>
           </el-tab-pane>
         </el-tabs>
       </el-form>
