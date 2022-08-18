@@ -1,11 +1,3 @@
-/*
- * @Descripttion:
- * @Author: SUI
- * @Date: 2022-07-27 14:10:23
- * @LastEditors: SUI
- * @LastEditTime: 2022-07-27 14:10:28
- * @FilePath: \Mall-system\src\views\order\citydata.js
- */
 export default [
   {
     children: [

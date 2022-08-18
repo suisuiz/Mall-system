@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-05-12 09:23:13
  * @LastEditors: SUI
- * @LastEditTime: 2022-08-17 18:07:53
+ * @LastEditTime: 2022-08-18 18:28:38
  * @FilePath: \Mall-system\src\router\index.js
  */
 import Vue from 'vue'
