@@ -1,11 +1,3 @@
-<!--
- * @Descripttion: 
- * @Author: SUI
- * @Date: 2022-05-12 10:23:54
- * @LastEditors: SUI
- * @LastEditTime: 2022-08-16 17:50:32
- * @FilePath: \Mall-system\src\components\template.vue
--->
 <template>
   <div></div>
 </template>

@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-05-11 09:44:32
  * @LastEditors: SUI
- * @LastEditTime: 2022-07-25 15:13:25
+ * @LastEditTime: 2022-08-18 18:57:51
  * @FilePath: \Mall-system\z.md
 -->
 
@@ -71,6 +71,14 @@ npm i axios -S
 // 导航进度条
 npm install --save nprogress
 
+// 使用
+// 导入
+import NProgress from 'nprogress'
+// 打开
+NProgress.start()
+// 隐藏
+NProgress.done()
+
 
 // 树形组件
 npm i vue-table-with-tree-grid -S
@@ -90,8 +98,28 @@ import 'quill/dist/quill.snow.css' // for snow theme
 import 'quill/dist/quill.bubble.css' // for bubble theme
 
 Vue.use(VueQuillEditor)
+
+
+// 引入 echarts
+npm install echarts -S
+
+
+// 去 console
+babel-plugin-transform-remove-console
+https://www.npmjs.com/package/babel-plugin-transform-remove-console
+
+引入
+npm install babel-plugin-transform-remove-console --save-dev
 ```
 
 ## 效果
 
 http://gl.timemeetyou.com/#/login
+
+## 项目优化
+
+1、生成打包报告
+2、第三方库启用 CDN
+3、element-ui 组件启动按需加载
+4、路由懒加载
+5、首页内容定制
