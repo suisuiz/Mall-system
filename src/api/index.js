@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-05-12 09:23:13
  * @LastEditors: SUI
- * @LastEditTime: 2022-07-26 20:01:35
+ * @LastEditTime: 2022-08-18 18:51:15
  * @FilePath: \Mall-system\src\api\index.js
  */
 // 配置API接口地址
@@ -11,23 +11,6 @@ let root = 'http://www.ysqorz.top:8888/api/private/v1/'
 // let root = "http://timemeetyou.com:8889/api/private/v1/";
 // 引用 axios
 let axios = require('axios')
-// 倒入 nprogress 包对应的js和css文件
-import NProgress from 'nprogress'
-
-// axios的请求根路径
-axios.defaults.baseURL = 'http://www.ysqorz.top:8888/api/private/v1/' // 设置路由访问
-// axios.defaults.baseURL = 'http://timemeetyou.com:8889/api/private/v1/' // 设置路由访问
-axios.interceptors.request.use((config) => {
-  // 在请求拦截器中打开进度条
-  NProgress.start()
-  config.headers.Authorization = window.sessionStorage.getItem('token')
-  return config
-})
-axios.interceptors.response.use((config) => {
-  // 在相应拦截器中关闭进度条
-  NProgress.done()
-  return config
-})
 
 // 自定义判断元素类型JS
 function toType(obj) {
