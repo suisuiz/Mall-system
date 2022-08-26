@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-05-12 09:23:13
  * @LastEditors: SUI
- * @LastEditTime: 2022-05-13 18:22:21
+ * @LastEditTime: 2022-08-26 14:42:02
  * @FilePath: \Mall-system\src\components\common\Bread.vue
 -->
 <template>
@@ -23,14 +23,12 @@ export default {
 
   // 父子传值
   props: {
-    title: {
-      default: true
-    }
+    title: { default: true },
   },
 
   data() {
     return {
-      breadTitle: this.title
+      breadTitle: this.title,
     }
   },
 
@@ -38,8 +36,8 @@ export default {
   watch: {
     title(newVal) {
       this.title = newVal
-    }
-  }
+    },
+  },
 }
 </script>
 

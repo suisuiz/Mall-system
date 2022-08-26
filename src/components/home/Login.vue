@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-05-12 09:23:13
  * @LastEditors: SUI
- * @LastEditTime: 2022-05-13 18:23:17
+ * @LastEditTime: 2022-08-26 14:42:46
  * @FilePath: \Mall-system\src\components\home\Login.vue
 -->
 <template>
@@ -46,19 +46,19 @@ export default {
       // 表单默认值
       loginForm: {
         username: 'admin',
-        password: '123456'
+        password: '123456',
       },
       // 表单校验规则
       inputFormRules: {
         username: [
           { required: true, message: '请输入用户名', trigger: 'blur' },
-          { min: 3, max: 10, message: '长度在 3 到 10 个字符', trigger: 'blur' }
+          { min: 3, max: 10, message: '长度在 3 到 10 个字符', trigger: 'blur' },
         ],
         password: [
           { required: true, message: '请输入密码', trigger: 'blur' },
-          { min: 3, max: 15, message: '长度在 3 到 15 个字符', trigger: 'blur' }
-        ]
-      }
+          { min: 3, max: 15, message: '长度在 3 到 15 个字符', trigger: 'blur' },
+        ],
+      },
     }
   },
 
@@ -85,8 +85,8 @@ export default {
     // 重置
     resetForm(formName) {
       this.$refs[formName].resetFields()
-    }
-  }
+    },
+  },
 }
 </script>
 
