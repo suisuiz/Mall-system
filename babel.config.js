@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-05-09 12:12:01
  * @LastEditors: SUI
- * @LastEditTime: 2022-08-18 18:54:30
+ * @LastEditTime: 2022-08-26 14:12:26
  * @FilePath: \Mall-system\babel.config.js
  */
 // 这是在项目发布阶段需要用到的babel插件
