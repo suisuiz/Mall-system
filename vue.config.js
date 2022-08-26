@@ -1,9 +1,9 @@
 /*
- * @Descripttion:
+ * @Descripttion: webpack 配置
  * @Author: SUI
  * @Date: 2022-05-11 10:01:52
  * @LastEditors: SUI
- * @LastEditTime: 2022-08-18 18:58:11
+ * @LastEditTime: 2022-08-26 14:09:06
  * @FilePath: \Mall-system\vue.config.js
  */
 module.exports = {
