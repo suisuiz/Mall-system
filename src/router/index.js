@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-05-12 09:23:13
  * @LastEditors: SUI
- * @LastEditTime: 2022-08-18 18:28:38
+ * @LastEditTime: 2022-08-29 11:30:18
  * @FilePath: \Mall-system\src\router\index.js
  */
 import Vue from 'vue'
@@ -46,49 +46,49 @@ const routes = [
   },
   {
     path: '/home',
-    component: () => import('@/views/Home'),
+    component: () => import(/* webpackChunkName: "Login_Welcome_Users" */ '@/views/Home'),
     // 重定向
     redirect: '/welcome',
     children: [
       {
         path: '/welcome',
-        component: () => import('@/components/home/Welcome'),
+        component: () => import(/* webpackChunkName: "Login_Welcome_Users" */ '@/components/home/Welcome'),
       },
       {
         path: '/users',
-        component: () => import('@/views/user/Users'),
+        component: () => import(/* webpackChunkName: "Users_Rights_Roles" */ '@/views/user/Users'),
       },
       {
         path: '/roles',
-        component: () => import('@/views/power/Roles'),
+        component: () => import(/* webpackChunkName: "Users_Rights_Roles" */ '@/views/power/Roles'),
       },
       {
         path: '/rights',
-        component: () => import('@/views/power/Rights'),
+        component: () => import(/* webpackChunkName: "Users_Rights_Roles" */ '@/views/power/Rights'),
       },
       {
         path: '/goods',
-        component: () => import('@/views/goods/Goods'),
+        component: () => import(/* webpackChunkName: "Add_Goods" */ '@/views/goods/Goods'),
       },
       {
         path: '/goods/add',
-        component: () => import('@/views/goods/Add'),
+        component: () => import(/* webpackChunkName: "Add_Goods" */ '@/views/goods/Add'),
       },
       {
         path: '/params',
-        component: () => import('@/views/goods/Params'),
+        component: () => import(/* webpackChunkName: "Cate_Params" */ '@/views/goods/Params'),
       },
       {
         path: '/categories',
-        component: () => import('@/views/goods/Cate'),
+        component: () => import(/* webpackChunkName: "Cate_Params" */ '@/views/goods/Cate'),
       },
       {
         path: '/orders',
-        component: () => import('@/views/order/Orders'),
+        component: () => import(/* webpackChunkName: "Order_Report" */ '@/views/order/Orders'),
       },
       {
         path: '/reports',
-        component: () => import('@/views/report/Reports'),
+        component: () => import(/* webpackChunkName: "Order_Report" */ '@/views/report/Reports'),
       },
     ],
   },

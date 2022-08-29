@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-05-12 09:23:13
  * @LastEditors: SUI
- * @LastEditTime: 2022-08-18 18:46:39
+ * @LastEditTime: 2022-08-29 11:40:08
  * @FilePath: \Mall-system\src\views\Home.vue
 -->
 <template>
@@ -88,12 +88,12 @@ export default {
         103: 'el-icon-s-tools',
         101: 'el-icon-s-goods',
         102: 'el-icon-s-order',
-        145: 'el-icon-s-marketing',
+        145: 'el-icon-s-marketing'
       },
       // 侧边栏菜单默认不折叠
       isCollapse: false,
       // 被激活的导航地址
-      activePath: '/welcome',
+      activePath: '/welcome'
     }
   },
 
@@ -106,11 +106,12 @@ export default {
   methods: {
     // 退出登录
     async logout() {
+      console.log('sfd')
       try {
         await this.$confirm('是否退出登录?', '提示', {
           confirmButtonText: '退出',
           cancelButtonText: '取消',
-          type: 'warning',
+          type: 'warning'
         })
         this.$message.success('退出成功')
         // 退出就是清空token和重新跳转页面
@@ -124,7 +125,7 @@ export default {
     // 获取 aside 数据
     getMenuList() {
       let that = this
-      that.$api.get('menus', that.loginForm, (res) => {
+      that.$api.get('menus', that.loginForm, res => {
         if (res.meta.status !== 200) return that.$message.error(res.meta.msg)
         // console.log(res.data)
         that.menuList = res.data
@@ -142,8 +143,8 @@ export default {
       window.sessionStorage.setItem('activePath', activePath)
       // 当前页赋值
       this.activePath = activePath
-    },
-  },
+    }
+  }
 }
 </script>
 
