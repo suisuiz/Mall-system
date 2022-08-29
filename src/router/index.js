@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-05-12 09:23:13
  * @LastEditors: SUI
- * @LastEditTime: 2022-08-29 11:30:18
+ * @LastEditTime: 2022-08-29 13:38:59
  * @FilePath: \Mall-system\src\router\index.js
  */
 import Vue from 'vue'
@@ -33,7 +33,7 @@ const routes = [
   {
     path: '/',
     // 重定向
-    redirect: '/login',
+    redirect: '/login'
   },
   {
     path: '/login',
@@ -41,8 +41,8 @@ const routes = [
     // component: () => import('@/components/home/Login'),
     component: Login,
     meta: {
-      name: '登录',
-    },
+      name: '登录'
+    }
   },
   {
     path: '/home',
@@ -52,50 +52,50 @@ const routes = [
     children: [
       {
         path: '/welcome',
-        component: () => import(/* webpackChunkName: "Login_Welcome_Users" */ '@/components/home/Welcome'),
+        component: () => import('@/components/home/Welcome')
       },
       {
         path: '/users',
-        component: () => import(/* webpackChunkName: "Users_Rights_Roles" */ '@/views/user/Users'),
+        component: () => import('@/views/user/Users')
       },
       {
         path: '/roles',
-        component: () => import(/* webpackChunkName: "Users_Rights_Roles" */ '@/views/power/Roles'),
+        component: () => import('@/views/power/Roles')
       },
       {
         path: '/rights',
-        component: () => import(/* webpackChunkName: "Users_Rights_Roles" */ '@/views/power/Rights'),
+        component: () => import('@/views/power/Rights')
       },
       {
         path: '/goods',
-        component: () => import(/* webpackChunkName: "Add_Goods" */ '@/views/goods/Goods'),
+        component: () => import('@/views/goods/Goods')
       },
       {
         path: '/goods/add',
-        component: () => import(/* webpackChunkName: "Add_Goods" */ '@/views/goods/Add'),
+        component: () => import('@/views/goods/Add')
       },
       {
         path: '/params',
-        component: () => import(/* webpackChunkName: "Cate_Params" */ '@/views/goods/Params'),
+        component: () => import(/* webpackChunkName: "Cate_Params" */ '@/views/goods/Params')
       },
       {
         path: '/categories',
-        component: () => import(/* webpackChunkName: "Cate_Params" */ '@/views/goods/Cate'),
+        component: () => import(/* webpackChunkName: "Cate_Params" */ '@/views/goods/Cate')
       },
       {
         path: '/orders',
-        component: () => import(/* webpackChunkName: "Order_Report" */ '@/views/order/Orders'),
+        component: () => import(/* webpackChunkName: "Order_Report" */ '@/views/order/Orders')
       },
       {
         path: '/reports',
-        component: () => import(/* webpackChunkName: "Order_Report" */ '@/views/report/Reports'),
-      },
-    ],
-  },
+        component: () => import(/* webpackChunkName: "Order_Report" */ '@/views/report/Reports')
+      }
+    ]
+  }
 ]
 
 const router = new VueRouter({
-  routes,
+  routes
 })
 
 // 路由导航守卫
