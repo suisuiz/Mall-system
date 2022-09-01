@@ -1,13 +1,13 @@
 /*
- * @Descripttion: 
+ * @Descripttion:
  * @Author: SUI
  * @Date: 2022-05-12 09:23:13
  * @LastEditors: SUI
- * @LastEditTime: 2022-08-17 17:58:51
+ * @LastEditTime: 2022-09-01 14:50:40
  * @FilePath: \Mall-system\src\plugins\element.js
  */
 
-import Vue from 'vue';
+import Vue from 'vue'
 
 // 按需引入 element 组件
 import {
@@ -39,7 +39,13 @@ import {
   Tag,
   Tooltip,
   Tree,
-
+  Alert,
+  Step,
+  Steps,
+  Cascader,
+  Upload,
+  Tabs,
+  TabPane
 
   // Autocomplete,
   // Dropdown,
@@ -59,23 +65,16 @@ import {
   // TimeSelect,
   // TimePicker,
   // Popover,
-  // Tabs,
-  // TabPane,
-  // Alert,
   // Slider,
   // Icon,
-  // Upload,
   // Progress,
   // Spinner,
   // Badge,
   // Rate,
-  // Steps,
-  // Step,
   // Carousel,
   // CarouselItem,
   // Collapse,
   // CollapseItem,
-  // Cascader,
   // ColorPicker,
   // Transfer,
   // Footer,
@@ -90,35 +89,41 @@ import {
   // CascaderPanel,
   // Loading,
   // Notification
-} from 'element-ui';
+} from 'element-ui'
 
-Vue.use(Button);
-Vue.use(Form);
-Vue.use(FormItem);
-Vue.use(Input);
-Vue.use(Container);
-Vue.use(Header);
-Vue.use(Aside);
-Vue.use(Main);
-Vue.use(Row);
-Vue.use(Col);
-Vue.use(Menu);
-Vue.use(Submenu);
-Vue.use(MenuItem);
-Vue.use(Breadcrumb);
-Vue.use(BreadcrumbItem);
-Vue.use(Card);
-Vue.use(Pagination);
-Vue.use(Table);
-Vue.use(TableColumn);
-Vue.use(Switch);
-Vue.use(Dialog);
-Vue.use(Select);
-Vue.use(Option);
-Vue.use(Tag);
-Vue.use(Tooltip);
-Vue.use(Tree);
-
+Vue.use(Button)
+Vue.use(Form)
+Vue.use(FormItem)
+Vue.use(Input)
+Vue.use(Container)
+Vue.use(Header)
+Vue.use(Aside)
+Vue.use(Main)
+Vue.use(Row)
+Vue.use(Col)
+Vue.use(Menu)
+Vue.use(Submenu)
+Vue.use(MenuItem)
+Vue.use(Breadcrumb)
+Vue.use(BreadcrumbItem)
+Vue.use(Card)
+Vue.use(Pagination)
+Vue.use(Table)
+Vue.use(TableColumn)
+Vue.use(Switch)
+Vue.use(Dialog)
+Vue.use(Select)
+Vue.use(Option)
+Vue.use(Tag)
+Vue.use(Tooltip)
+Vue.use(Tree)
+Vue.use(Alert)
+Vue.use(Step)
+Vue.use(Steps)
+Vue.use(Cascader)
+Vue.use(Upload)
+Vue.use(Tabs)
+Vue.use(TabPane)
 
 // Vue.use(Autocomplete);
 // Vue.use(Dropdown);
@@ -138,23 +143,16 @@ Vue.use(Tree);
 // Vue.use(TimeSelect);
 // Vue.use(TimePicker);
 // Vue.use(Popover);
-// Vue.use(Tabs);
-// Vue.use(TabPane);
-// Vue.use(Alert);
 // Vue.use(Slider);
 // Vue.use(Icon);
-// Vue.use(Upload);
 // Vue.use(Progress);
 // Vue.use(Spinner);
 // Vue.use(Badge);
 // Vue.use(Rate);
-// Vue.use(Steps);
-// Vue.use(Step);
 // Vue.use(Carousel);
 // Vue.use(CarouselItem);
 // Vue.use(Collapse);
 // Vue.use(CollapseItem);
-// Vue.use(Cascader);
 // Vue.use(ColorPicker);
 // Vue.use(Transfer);
 // Vue.use(Footer);
@@ -170,13 +168,11 @@ Vue.use(Tree);
 
 // Vue.use(Loading.directive);
 
-Vue.prototype.$message = Message;
-Vue.prototype.$confirm = MessageBox.confirm;
-
-
+Vue.prototype.$message = Message
+Vue.prototype.$confirm = MessageBox.confirm
 
 // Vue.prototype.$loading = Loading.service;
 // Vue.prototype.$msgbox = MessageBox;
-// Vue.prototype.$alert = MessageBox.alert;
+Vue.prototype.$alert = MessageBox.alert
 // Vue.prototype.$prompt = MessageBox.prompt;
 // Vue.prototype.$notify = Notification;
