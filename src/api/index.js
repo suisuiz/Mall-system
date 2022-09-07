@@ -3,7 +3,7 @@
  * @Author: SUI
  * @Date: 2022-05-12 09:23:13
  * @LastEditors: SUI
- * @LastEditTime: 2022-08-18 18:51:15
+ * @LastEditTime: 2022-09-07 15:57:48
  * @FilePath: \Mall-system\src\api\index.js
  */
 // 配置API接口地址
@@ -46,15 +46,15 @@ function apiAxios(method, url, params, success) {
     data: method === 'POST' || method === 'PUT' ? params : null,
     params: method === 'GET' || method === 'DELETE' ? params : null,
     baseURL: root,
-    withCredentials: false,
+    withCredentials: false
   })
-    .then(function (res) {
+    .then(res => {
       // console.log("DATA", JSON.stringify(res.data));
       if (res.status == 200) {
         success(res.data)
       }
     })
-    .catch(function (res) {
+    .catch(res => {
       console.log('catch', res)
       success(res)
     })
@@ -63,16 +63,16 @@ function apiAxios(method, url, params, success) {
 // 返回在vue模板中的调用接口
 export default {
   root: root,
-  get: function (url, params, response) {
+  get(url, params, response) {
     return apiAxios('GET', url, params, response)
   },
-  post: function (url, params, response) {
+  post(url, params, response) {
     return apiAxios('POST', url, params, response)
   },
-  put: function (url, params, response) {
+  put(url, params, response) {
     return apiAxios('PUT', url, params, response)
   },
-  delete: function (url, params, response) {
+  delete(url, params, response) {
     return apiAxios('DELETE', url, params, response)
-  },
+  }
 }

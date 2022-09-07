@@ -16,6 +16,9 @@ import store from './store'
 // 引入树形组件
 import TreeTable from 'vue-table-with-tree-grid'
 
+// 引入富文本
+import VueQuillEditor from 'vue-quill-editor'
+
 // 导入 nprogress 包对应的js和css文件
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
@@ -24,20 +27,18 @@ import axios from 'axios'
 // axios的请求根路径
 axios.defaults.baseURL = 'http://www.ysqorz.top:8888/api/private/v1/' // 设置路由访问
 // axios.defaults.baseURL = 'http://timemeetyou.com:8889/api/private/v1/' // 设置路由访问
-axios.interceptors.request.use((config) => {
+axios.interceptors.request.use(config => {
   // 在请求拦截器中打开进度条
   NProgress.start()
   config.headers.Authorization = window.sessionStorage.getItem('token')
   return config
 })
-axios.interceptors.response.use((config) => {
+axios.interceptors.response.use(config => {
   // 在相应拦截器中关闭进度条
   NProgress.done()
   return config
 })
 
-// 引入富文本
-import VueQuillEditor from 'vue-quill-editor'
 // 引入富文本样式
 import 'quill/dist/quill.core.css' // import styles
 import 'quill/dist/quill.snow.css' // for snow theme
@@ -69,7 +70,7 @@ router.beforeEach((to, from, next) => {
 })
 
 //定义一个全局的时间过滤器
-Vue.filter('dateFormat', function (originValue) {
+Vue.filter('dateFormat', function(originValue) {
   const dt = new Date(originValue * 1000)
   const y = dt.getFullYear()
   //getMonth方法获取的月份从0开始，所以需要加1.
@@ -87,5 +88,5 @@ Vue.filter('dateFormat', function (originValue) {
 new Vue({
   router,
   store,
-  render: (h) => h(App),
+  render: h => h(App)
 }).$mount('#app')
